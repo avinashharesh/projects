@@ -60,22 +60,22 @@ else:
     vehicler=pygame.image.load('images/left/truck.png')
 num3=random.randint(0,3)
 if(num3==0):
-    vehicleu=pygame.image.load('images/up/car.png')
+    vehicleu=pygame.image.load('images/down/car.png')
 elif(num3==1):
-    vehicleu=pygame.image.load('images/up/bus.png')
+    vehicleu=pygame.image.load('images/down/bus.png')
 elif(num3==2):
-    vehicleu=pygame.image.load('images/up/bike.png')
+    vehicleu=pygame.image.load('images/down/bike.png')
 else:
-    vehicleu=pygame.image.load('images/up/truck.png')
+    vehicleu=pygame.image.load('images/down/truck.png')
 num4=random.randint(0,3)
 if(num4==0):
-    vehicled=pygame.image.load('images/down/car.png')
+    vehicled=pygame.image.load('images/up/car.png')
 elif(num4==1):
-    vehicled=pygame.image.load('images/down/bus.png')
+    vehicled=pygame.image.load('images/up/bus.png')
 elif(num4==2):
-    vehicled=pygame.image.load('images/down/bike.png')
+    vehicled=pygame.image.load('images/up/bike.png')
 else:
-    vehicled=pygame.image.load('images/down/truck.png')
+    vehicled=pygame.image.load('images/up/truck.png')
 
 
 clock=pygame.time.Clock ()
