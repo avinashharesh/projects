@@ -27,10 +27,15 @@ Yu=20
 Xd=570
 Yd=700
 
+#currentsignals
+signall=""
+signalr=""
+signalu=""
+signald=""
+
+
 def player(vehicle,x,y):
     screen.blit(vehicle,(x,y))
-clock=pygame.time.Clock()
-start=5
 
 
 
@@ -73,31 +78,60 @@ else:
     vehicled=pygame.image.load('images/down/truck.png')
 
 
-
-#game loop
+clock=pygame.time.Clock ()
+counter=10
+counter1=20
+pygame.time.set_timer(pygame.USEREVENT,1000)
 running=True
 while running:
-    Xl+=1
-    Xr-=1
+    if Xl<470 or signall=="green" or Xl>520:
+        Xl+=1
+    if Xr>820 or signalr=="green" or Xr<770:
+        Xr-=1
     Yu+=1
     Yd-=1
-    if(start<0):
-        vehicler=bike
-    start-=1
     for event in pygame.event.get():
+        if event.type==pygame.USEREVENT:
+            counter-=1
+            counter1-=1
         if event.type==pygame.QUIT:
             running=False
     screen.fill((0,0,0)) 
     screen.blit(background,(0,0))
-    screen.blit(red,(500,250))
-    screen.blit(red,(825,250))
-    screen.blit(red,(500,525))
-    screen.blit(red,(825,525))
+    if counter1<=0:
+        counter=10
+        counter1=20
+    if counter >=0:
+        screen.blit(red,(500,250))
+        signall="red"
+    else:
+        screen.blit(green,(500,250))
+        signall="green"
+    if counter>=0:
+        screen.blit(green,(825,250))
+        signalu="green"
+    else:
+        screen.blit(red,(825,250))
+        signalu="red"
+    if counter>=0:
+        screen.blit(green,(500,525))
+        signald="green"
+    else:
+        screen.blit(red,(500,525))
+        signald="red"
+    if counter >=0:
+        screen.blit(red,(825,525))
+        signalr="red"
+    else:
+        screen.blit(green,(825,525))
+        signalr="green"
+    
     player(vehiclel,Xl,Yl)
     player(vehicler,Xr,Yr)
     player(vehicleu,Xu,Yu)
-    player(vehicled,Xd,Yd) 
-    clock.tick(1000)
+    player(vehicled,Xd,Yd)
+    clock.tick(60) 
+
 
 
 
