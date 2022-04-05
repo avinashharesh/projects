@@ -116,8 +116,12 @@ ypos = []
 dirs = []
 vehiclegen = 4
 counter = 10
+counter2=2
 sg = 'l'
-flag = 0
+fl=1
+fu=1
+fr=1
+fd=1
 vehiclecount = 0
 while running:
     flag = 0
@@ -125,57 +129,97 @@ while running:
         if event.type == pygame.USEREVENT:
             vehiclegen -= 1
             counter -= 1
+            counter2-=1
         if event.type == pygame.QUIT:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
     if counter < 0:
-        flag = 1
         if sg == 'l':
+            fl=0
             sg = 'u'
         elif sg == 'u':
+            fu=0
             sg = 'r'
         elif sg == 'r':
+            fr=0
             sg = 'd'
         else:
+            fd=0
             sg = 'l'
         counter = 10
     if counter >= 0 or flag == 1:
         if sg == 'l':
+            if fd==0:
+                counter2=2
+                fd=1
+            if counter2>=0:
+                signald='yellow'
+            else:
+                signald='red'
             signall='green'
             signalu='red'
             signalr='red'
-            signald='red'
             screen.blit(green, (500, 250))
             screen.blit(red, (825, 250))
             screen.blit(red, (825, 525))
-            screen.blit(red, (500, 525))
+            if signald=='yellow':
+                screen.blit(yellow, (500, 525))
+            else:
+                screen.blit(red,(500,525))
         elif sg == 'u':
-            signall='red'
+            if fl==0:
+                counter2=2
+                fl=1
+            if counter2>=0:
+                signall='yellow'
+            else:
+                signall='red'
             signalu='green'
             signalr='red'
             signald='red'
-            screen.blit(red, (500, 250))
+            if signall=='yellow':
+                screen.blit(yellow, (500, 250))
+            else:
+                screen.blit(red,(500,250))
             screen.blit(green, (825, 250))
             screen.blit(red, (825, 525))
             screen.blit(red, (500, 525))
         elif sg == 'r':
+            if fu==0:
+                counter2=2
+                fu=1
+            if counter2>=0:
+                signalu='yellow'
+            else:
+                signalu='red'
             signall='red'
-            signalu='red'
             signalr='green'
             signald='red'
             screen.blit(red, (500, 250))
-            screen.blit(red, (825, 250))
+            if signalu=='yellow':
+                screen.blit(yellow, (825, 250))
+            else:
+                screen.blit(red,(825,250))
             screen.blit(green, (825, 525))
             screen.blit(red, (500, 525))
         else:
+            if fr==0:
+                counter2=2
+                fr=1
+            if counter2>=0:
+                signalr='yellow'
+            else:
+                signalr='red'
             signall='red'
             signalu='red'
-            signalr='red'
             signald='green'
             screen.blit(red, (500, 250))
             screen.blit(red, (825, 250))
-            screen.blit(red, (825, 525))
+            if signalr=='yellow':
+                screen.blit(yellow, (825, 525))
+            else:
+                screen.blit(red,(825,525))
             screen.blit(green, (500, 525))
 
     v = ''
@@ -190,7 +234,7 @@ while running:
             if signalu=='green' or ypos[i]<=250 or ypos[i]>=300:
                 ypos[i] += 1
         elif dirs[i] == 'right':
-            if signalr=='green' or xpos[i]>=815 or xpos[i]<=745:
+            if signalr=='green' or xpos[i]>=815 or xpos[i]<=765:
                 xpos[i] -= 1
         else:
             if signald=='green' or ypos[i]>=535 or ypos[i]<=490:
