@@ -239,15 +239,14 @@ while running:
                if i not in ql:
                     ql.append(i)
            if xpos[i]>=505:
-               xpos[i]+=1
+               if signall=='red' or signall=='yellow':
+                    xpos[i]+=1
                ql.remove(i)
-               
-        if dirs[i] == 'left':
-            if signall=='red' or signall=='yellow':
+           if signall=='red' or signall=='yellow':
                 for k in range(len(ql)):
                     s=ql[k]
                     if k==0:
-                        if xpos[s]>=465 and xpos[s]<=535:
+                        if xpos[s]>=465:
                             xpos[s]=xpos[s]
                         else:
                             xpos[s]+=1
@@ -257,8 +256,7 @@ while running:
                             xpos[s]=xpos[s]
                         else:
                             xpos[s]+=1
-                
-            else:
+           else:
                 xpos[i]+=1
         elif dirs[i] == 'up':
             if signalu=='green' or ypos[i]<=250 or ypos[i]>=300:
