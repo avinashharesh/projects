@@ -139,8 +139,8 @@ while running:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
-    # screen.blit(bus,(465,385))
-    # screen.blit(bus,(375,385))
+    # screen.blit(bus,(565-70*2,385))
+    # screen.blit(bus,(465-70*2,385))
     if counter < 0:
         if sg == 'l':
             fl=0
@@ -235,29 +235,48 @@ while running:
     dir = ''
     for i in range(vehiclecount):
         if dirs[i]=='left':
-           if xpos[i]>=30:
-               if i not in ql:
-                    ql.append(i)
-           if xpos[i]>=505:
-               if signall=='red' or signall=='yellow':
+            if signall=='red' or signall=='yellow':
+                k=0
+                for j in range(vehiclecount):
+                    if xpos[j] in range(465-100*k,565-100*k) and j!=i:
+                        k+=1
+                if xpos[i]>=465-100*k and xpos[i]<=565-100*k:
+                    xpos[i]=xpos[i]
+                else:
                     xpos[i]+=1
-               ql.remove(i)
-           if signall=='red' or signall=='yellow':
-                for k in range(len(ql)):
-                    s=ql[k]
-                    if k==0:
-                        if xpos[s]>=465:
-                            xpos[s]=xpos[s]
-                        else:
-                            xpos[s]+=1
-                    else:
-                        v=ql[k-1]
-                        if xpos[v]-xpos[s]<=100:
-                            xpos[s]=xpos[s]
-                        else:
-                            xpos[s]+=1
-           else:
+            else:
                 xpos[i]+=1
+
+        #    if xpos[i]>=30:
+        #        if i not in ql:
+        #             ql.append(i)
+        #    if xpos[i]>=505:
+        #        if signall=='red' or signall=='yellow':
+        #             xpos[i]+=1
+        #        ql.remove(i)
+        #    if signall=='red' or signall=='yellow':
+        #         k=0
+        #         flag2=0
+        #         while(k<len(ql)):
+        #             s=ql[k]
+        #             if k==0:
+        #                 if xpos[s]>=465:
+        #                     xpos[s]=xpos[s]
+        #                     flag2=1
+        #                 else:
+        #                     xpos[s]+=1
+        #             else:
+        #                 v=ql[k-1]
+        #                 if xpos[v]-xpos[s]<=100:
+        #                     xpos[s]=xpos[s]
+        #                     flag2=1
+        #                 else:
+        #                     xpos[s]+=1
+        #             if flag2==1:
+        #                 k+=1
+        #                 flag2=0
+        #    else:
+        #         xpos[i]+=1
         elif dirs[i] == 'up':
             if signalu=='green' or ypos[i]<=250 or ypos[i]>=300:
                 ypos[i] += 1
