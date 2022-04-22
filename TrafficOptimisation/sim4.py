@@ -56,7 +56,7 @@ def VehicleGenerate():
             vehicle = pygame.image.load('images/left/bus.png')
         else:
             vehicle = pygame.image.load('images/left/truck.png')
-        x = 30
+        x = 10
         y = 385
     elif dir == 'up':
         num2 = random.randint(0, 3)
@@ -85,7 +85,7 @@ def VehicleGenerate():
             vehicle = pygame.image.load('images/right/bus.png')
         else:
             vehicle = pygame.image.load('images/right/truck.png')
-        x = 1300
+        x = 1350
         y = 445
     else:
         num2 = random.randint(0, 3)
@@ -141,10 +141,12 @@ while running:
     screen.blit(background, (0, 0))
     # screen.blit(bus,(565-70*2,385))
     # screen.blit(car,(765,300))
-    # screen.blit(car,(835,445))
+    # screen.blit(car, (1350, 445))
+    # screen.blit(car, (1280, 445))
     # screen.blit(car,(835,445))
     # screen.blit(car,(935,445))
-    # screen.blit(car,(1035,445))
+    # screen.blit(car, (765, 250))
+    # screen.blit(car, (765, 300))
     if counter < 0:
         if sg == 'l':
             fl = 0
@@ -242,109 +244,105 @@ while running:
             if signall == 'red' or signall == 'yellow':
                 k = 0
                 for j in range(vehiclecount):
-                    if xpos[j] in range(465-100*k, 565-100*k) and j != i and ypos[j]==385:
+                    if xpos[j] in range(465-100*k, 525-100*k) and j != i and ypos[j] == 385:
                         k += 1
-                if xpos[i] >= 465-100*k and xpos[i] <= 565:
+                if xpos[i] >= 465-100*k and xpos[i] <= 525:
                     xpos[i] = xpos[i]
                 else:
                     xpos[i] += 1
             else:
                 xpos[i] += 1
-
-        #    if xpos[i]>=30:
-        #        if i not in ql:
-        #             ql.append(i)
-        #    if xpos[i]>=505:
-        #        if signall=='red' or signall=='yellow':
-        #             xpos[i]+=1
-        #        ql.remove(i)
-        #    if signall=='red' or signall=='yellow':
-        #         k=0
-        #         flag2=0
-        #         while(k<len(ql)):
-        #             s=ql[k]
-        #             if k==0:
-        #                 if xpos[s]>=465:
-        #                     xpos[s]=xpos[s]
-        #                     flag2=1
-        #                 else:
-        #                     xpos[s]+=1
-        #             else:
-        #                 v=ql[k-1]
-        #                 if xpos[v]-xpos[s]<=100:
-        #                     xpos[s]=xpos[s]
-        #                     flag2=1
-        #                 else:
-        #                     xpos[s]+=1
-        #             if flag2==1:
-        #                 k+=1
-        #                 flag2=0
-        #    else:
-        #         xpos[i]+=1
         elif dirs[i] == 'up':
-            if signalu == 'red' or signalu=='yellow':
-                if xpos[i]==765:
-                    k3=0
+            if signalu == 'red' or signalu == 'yellow':
+                if xpos[i] == 765:
+                    k3 = 0
                     for m in range(vehiclecount):
-                        if ypos[m] in range(250-100*k3,300-100*k3) and m!=i and xpos[m]==765:
-                            k3+=1
-                    if ypos[i]>=250-100*k3 and ypos[i]<=300:
-                        ypos[i]=ypos[i]
+                        if ypos[m] in range(250-100*k3, 300-100*k3) and m != i and xpos[m] == 765:
+                            k3 += 1
+                    if ypos[i] >= 250-100*k3 and ypos[i] <= 300:
+                        ypos[i] = ypos[i]
                     else:
-                        ypos[i]+=1
+                        ypos[i] += 1
                 else:
-                    k4=0
+                    k4 = 0
                     for e in range(vehiclecount):
-                        if ypos[e] in range(250-100*k4,300-100*k4) and e!=i and xpos[e]==700:
-                            k4+=1
-                    if ypos[i]>=250-100*k4 and ypos[i]<=300:
-                        ypos[i]=ypos[i]
+                        if ypos[e] in range(250-100*k4, 300-100*k4) and e != i and xpos[e] == 700:
+                            k4 += 1
+                    if ypos[i] >= 250-100*k4 and ypos[i] <= 300:
+                        ypos[i] = ypos[i]
                     else:
-                        ypos[i]+=1
+                        ypos[i] += 1
             else:
-                ypos[i]+=1
+                ypos[i] += 1
         elif dirs[i] == 'right':
-            if signalr == 'red' or signalr=='yellow':
-                k2=0
+            if signalr == 'red' or signalr == 'yellow':
+                k2 = 0
                 for l in range(vehiclecount):
-                    if xpos[l] in range(835+100*k2,775+100*k2,-1) and l!=i and ypos[l]==445:
-                        k2+=1
-                if xpos[i]<=835+100*k2 and xpos[i]>=775:
-                    xpos[i]=xpos[i]
+                    if xpos[l] in range(835+100*k2, 775+100*k2, -1) and l != i and ypos[l] == 445:
+                        k2 += 1
+                if xpos[i] <= 835+100*k2 and xpos[i] >= 775:
+                    xpos[i] = xpos[i]
                 else:
-                    xpos[i]-=1
+                    xpos[i] -= 1
             else:
-                xpos[i]-=1
+                xpos[i] -= 1
         else:
-            if signald == 'red' or signald=='yellow':
-                if xpos[i]==640:
-                    k5=0
+            if signald == 'red' or signald == 'yellow':
+                if xpos[i] == 640:
+                    k5 = 0
                     for p in range(vehiclecount):
-                        if ypos[p] in range(535+100*k5,490+100*k5,-1) and p!=i and xpos[p]==640:
-                            k5+=1
-                    if ypos[i]<=535+100*k5 and ypos[i]>=490:
-                        ypos[i]=ypos[i]
+                        if ypos[p] in range(535+100*k5, 490+100*k5, -1) and p != i and xpos[p] == 640:
+                            k5 += 1
+                    if ypos[i] <= 535+100*k5 and ypos[i] >= 490:
+                        ypos[i] = ypos[i]
                     else:
-                        ypos[i]-=1
+                        ypos[i] -= 1
                 else:
-                    k6=0
+                    k6 = 0
                     for q in range(vehiclecount):
-                        if ypos[q] in range(535+100*k6,490+100*k6,-1) and q!=i and xpos[q]==570:
-                            k6+=1
-                    if ypos[i]<=535+100*k6 and ypos[i]>=490:
-                        ypos[i]=ypos[i]
+                        if ypos[q] in range(535+100*k6, 490+100*k6, -1) and q != i and xpos[q] == 570:
+                            k6 += 1
+                    if ypos[i] <= 535+100*k6 and ypos[i] >= 490:
+                        ypos[i] = ypos[i]
                     else:
-                        ypos[i]-=1
+                        ypos[i] -= 1
             else:
-                ypos[i]-=1
+                ypos[i] -= 1
     if vehiclegen <= 0:
         v, x, y, dir = VehicleGenerate()
-        vehicles.append(v)
-        xpos.append(x)
-        ypos.append(y)
-        dirs.append(dir)
-        vehiclecount += 1
-        vehiclegen = 2
+        if dir == 'left':
+            fo = 0
+            for o in range(vehiclecount):
+                if xpos[o] in range(10, 80) and ypos[o] == 385:
+                    fo = 1
+                    break
+            if fo == 0:
+                vehicles.append(v)
+                xpos.append(x)
+                ypos.append(y)
+                dirs.append(dir)
+                vehiclecount += 1
+                vehiclegen = 2
+        elif dir == 'right':
+            fu = 0
+            for u in range(vehiclecount):
+                if xpos[u] in range(1350, 1280, -1) and ypos[u] == 445:
+                    fu = 1
+                    break
+            if fu == 0:
+                vehicles.append(v)
+                xpos.append(x)
+                ypos.append(y)
+                dirs.append(dir)
+                vehiclecount += 1
+                vehiclegen = 2
+        else:
+            vehicles.append(v)
+            xpos.append(x)
+            ypos.append(y)
+            dirs.append(dir)
+            vehiclecount += 1
+            vehiclegen = 2
     for i in range(vehiclecount):
         player(vehicles[i], xpos[i], ypos[i])
     clock.tick(60)
