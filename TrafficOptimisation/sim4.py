@@ -316,8 +316,27 @@ while running:
             else:
                 xpos[i]-=1
         else:
-            if signald == 'green' or ypos[i] >= 535 or ypos[i] <= 490:
-                ypos[i] -= 1
+            if signald == 'red' or signald=='yellow':
+                if xpos[i]==640:
+                    k5=0
+                    for p in range(vehiclecount):
+                        if ypos[p] in range(535+100*k5,490+100*k5,-1) and p!=i and xpos[p]==640:
+                            k5+=1
+                    if ypos[i]<=535+100*k5 and ypos[i]>=490:
+                        ypos[i]=ypos[i]
+                    else:
+                        ypos[i]-=1
+                else:
+                    k6=0
+                    for q in range(vehiclecount):
+                        if ypos[q] in range(535+100*k6,490+100*k6,-1) and q!=i and xpos[q]==570:
+                            k6+=1
+                    if ypos[i]<=535+100*k6 and ypos[i]>=490:
+                        ypos[i]=ypos[i]
+                    else:
+                        ypos[i]-=1
+            else:
+                ypos[i]-=1
     if vehiclegen <= 0:
         v, x, y, dir = VehicleGenerate()
         vehicles.append(v)
