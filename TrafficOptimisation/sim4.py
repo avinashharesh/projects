@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/left/car.png')
+car = pygame.image.load('images/right/car.png')
 bus = pygame.image.load('images/left/bus.png')
 bike = pygame.image.load('images/right/bike.png')
 truck = pygame.image.load('images/right/truck.png')
@@ -115,7 +115,7 @@ xpos = []
 ypos = []
 dirs = []
 ql = []
-vehiclegen = 4
+vehiclegen = 2
 counter = 10
 counter2 = 2
 sg = 'l'
@@ -140,7 +140,11 @@ while running:
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
     # screen.blit(bus,(565-70*2,385))
-    # screen.blit(bus,(465-70*2,385))
+    # screen.blit(car,(735,445))
+    # screen.blit(car,(835,445))
+    # screen.blit(car,(835,445))
+    # screen.blit(car,(935,445))
+    # screen.blit(car,(1035,445))
     if counter < 0:
         if sg == 'l':
             fl = 0
@@ -238,7 +242,7 @@ while running:
             if signall == 'red' or signall == 'yellow':
                 k = 0
                 for j in range(vehiclecount):
-                    if xpos[j] in range(465-100*k, 565-100*k) and j != i:
+                    if xpos[j] in range(465-100*k, 565-100*k) and j != i and ypos[j]==385:
                         k += 1
                 if xpos[i] >= 465-100*k and xpos[i] <= 565:
                     xpos[i] = xpos[i]
@@ -281,8 +285,17 @@ while running:
             if signalu == 'green' or ypos[i] <= 250 or ypos[i] >= 300:
                 ypos[i] += 1
         elif dirs[i] == 'right':
-            if signalr == 'green' or xpos[i] >= 815 or xpos[i] <= 765:
-                xpos[i] -= 1
+            if signalr == 'red' or signalr=='yellow':
+                k2=0
+                for l in range(vehiclecount):
+                    if xpos[l] in range(835+100*k2,735+100*k2,-1) and l!=i and ypos[l]==445:
+                        k2+=1
+                if xpos[i]<=835+100*k2 and xpos[i]>=735:
+                    xpos[i]=xpos[i]
+                else:
+                    xpos[i]-=1
+            else:
+                xpos[i]-=1
         else:
             if signald == 'green' or ypos[i] >= 535 or ypos[i] <= 490:
                 ypos[i] -= 1
@@ -293,7 +306,7 @@ while running:
         ypos.append(y)
         dirs.append(dir)
         vehiclecount += 1
-        vehiclegen = 4
+        vehiclegen = 2
     for i in range(vehiclecount):
         player(vehicles[i], xpos[i], ypos[i])
     clock.tick(60)
