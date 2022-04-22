@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/right/car.png')
+car = pygame.image.load('images/up/car.png')
 bus = pygame.image.load('images/left/bus.png')
 bike = pygame.image.load('images/right/bike.png')
 truck = pygame.image.load('images/right/truck.png')
@@ -140,7 +140,7 @@ while running:
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
     # screen.blit(bus,(565-70*2,385))
-    # screen.blit(car,(735,445))
+    # screen.blit(car,(765,300))
     # screen.blit(car,(835,445))
     # screen.blit(car,(835,445))
     # screen.blit(car,(935,445))
@@ -282,8 +282,27 @@ while running:
         #    else:
         #         xpos[i]+=1
         elif dirs[i] == 'up':
-            if signalu == 'green' or ypos[i] <= 250 or ypos[i] >= 300:
-                ypos[i] += 1
+            if signalu == 'red' or signalu=='yellow':
+                if xpos[i]==765:
+                    k3=0
+                    for m in range(vehiclecount):
+                        if ypos[m] in range(250-100*k3,300-100*k3) and m!=i and xpos[m]==765:
+                            k3+=1
+                    if ypos[i]>=250-100*k3 and ypos[i]<=300:
+                        ypos[i]=ypos[i]
+                    else:
+                        ypos[i]+=1
+                else:
+                    k4=0
+                    for e in range(vehiclecount):
+                        if ypos[e] in range(250-100*k4,300-100*k4) and e!=i and xpos[e]==700:
+                            k4+=1
+                    if ypos[i]>=250-100*k4 and ypos[i]<=300:
+                        ypos[i]=ypos[i]
+                    else:
+                        ypos[i]+=1
+            else:
+                ypos[i]+=1
         elif dirs[i] == 'right':
             if signalr == 'red' or signalr=='yellow':
                 k2=0
