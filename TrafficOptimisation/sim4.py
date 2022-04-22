@@ -288,9 +288,9 @@ while running:
             if signalr == 'red' or signalr=='yellow':
                 k2=0
                 for l in range(vehiclecount):
-                    if xpos[l] in range(835+100*k2,735+100*k2,-1) and l!=i and ypos[l]==445:
+                    if xpos[l] in range(835+100*k2,775+100*k2,-1) and l!=i and ypos[l]==445:
                         k2+=1
-                if xpos[i]<=835+100*k2 and xpos[i]>=735:
+                if xpos[i]<=835+100*k2 and xpos[i]>=775:
                     xpos[i]=xpos[i]
                 else:
                     xpos[i]-=1
