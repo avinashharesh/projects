@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/up/car.png')
+car = pygame.image.load('images/left/car.png')
 bus = pygame.image.load('images/left/bus.png')
 bike = pygame.image.load('images/right/bike.png')
 truck = pygame.image.load('images/right/truck.png')
@@ -71,10 +71,10 @@ def VehicleGenerate():
         num3 = random.randint(0, 1)
         if num3 == 0:
             x = 765
-            y = 20
+            y = 5
         else:
             x = 700
-            y = 20
+            y = 5
     elif dir == 'right':
         num2 = random.randint(0, 3)
         if num2 == 0:
@@ -100,10 +100,10 @@ def VehicleGenerate():
         num3 = random.randint(0, 1)
         if num3 == 0:
             x = 570
-            y = 700
+            y = 750
         else:
             x = 640
-            y = 700
+            y = 750
     return vehicle, x, y, dir
 
 
@@ -128,6 +128,7 @@ temp = 0
 vehiclecount = 0
 vehiclel = []
 vehiclelcount = 0
+block=0
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -139,8 +140,9 @@ while running:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
+    screen.blit(car, (765, 385))
     # screen.blit(bus,(565-70*2,385))
-    # screen.blit(car,(765,300))
+    # screen.blit(car, (570, 750))
     # screen.blit(car, (1350, 445))
     # screen.blit(car, (1280, 445))
     # screen.blit(car,(835,445))
@@ -241,6 +243,10 @@ while running:
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
+            # if xpos[i]>=565 and xpos[i]<765:
+            #     block+=1
+            # if xpos[i]>=765:
+            #     block-=1
             if signall == 'red' or signall == 'yellow':
                 k = 0
                 for j in range(vehiclecount):
@@ -336,13 +342,32 @@ while running:
                 dirs.append(dir)
                 vehiclecount += 1
                 vehiclegen = 2
+        elif dir == 'up':
+            ft = 0
+            for t in range(vehiclecount):
+                if ypos[t] in range(5, 75) and (xpos[t] == 765 or xpos[t] == 700):
+                    ft = 1
+                    break
+            if ft == 0:
+                vehicles.append(v)
+                xpos.append(x)
+                ypos.append(y)
+                dirs.append(dir)
+                vehiclecount += 1
+                vehiclegen = 2
         else:
-            vehicles.append(v)
-            xpos.append(x)
-            ypos.append(y)
-            dirs.append(dir)
-            vehiclecount += 1
-            vehiclegen = 2
+            fw = 0
+            for w in range(vehiclecount):
+                if ypos[w] in range(750, 680, -1) and (xpos[w] == 570 or xpos[w] == 640):
+                    fw = 1
+                    break
+            if fw == 0:
+                vehicles.append(v)
+                xpos.append(x)
+                ypos.append(y)
+                dirs.append(dir)
+                vehiclecount += 1
+                vehiclegen = 2
     for i in range(vehiclecount):
         player(vehicles[i], xpos[i], ypos[i])
     clock.tick(60)
