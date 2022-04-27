@@ -11,9 +11,9 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/left/car.png')
+car = pygame.image.load('images/up/car.png')
 bus = pygame.image.load('images/left/bus.png')
-bike = pygame.image.load('images/right/bike.png')
+bike = pygame.image.load('images/left/bike.png')
 truck = pygame.image.load('images/right/truck.png')
 green = pygame.image.load('images/signals/green.png')
 red = pygame.image.load('images/signals/red.png')
@@ -128,7 +128,6 @@ temp = 0
 vehiclecount = 0
 vehiclel = []
 vehiclelcount = 0
-block=0
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -140,9 +139,9 @@ while running:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
-    screen.blit(car, (765, 385))
+    # screen.blit(car, (765, 500))
     # screen.blit(bus,(565-70*2,385))
-    # screen.blit(car, (570, 750))
+    # screen.blit(bike, (495, 385))
     # screen.blit(car, (1350, 445))
     # screen.blit(car, (1280, 445))
     # screen.blit(car,(835,445))
@@ -190,14 +189,23 @@ while running:
                 signall = 'yellow'
             else:
                 signall = 'red'
-            signalu = 'green'
             signalr = 'red'
             signald = 'red'
             if signall == 'yellow':
                 screen.blit(yellow, (500, 250))
             else:
                 screen.blit(red, (500, 250))
-            screen.blit(green, (825, 250))
+            flb = 0
+            for w in range(vehiclecount):
+                if xpos[w] in range(495, 765) and dirs[w] == 'left':
+                    flb = 1
+                    break
+            if flb == 1:
+                signalu = 'red'
+                screen.blit(red, (825, 250))
+            else:
+                signalu = 'green'
+                screen.blit(green, (825, 250))
             screen.blit(red, (825, 525))
             screen.blit(red, (500, 525))
         elif sg == 'r':
@@ -209,14 +217,25 @@ while running:
             else:
                 signalu = 'red'
             signall = 'red'
-            signalr = 'green'
             signald = 'red'
             screen.blit(red, (500, 250))
             if signalu == 'yellow':
                 screen.blit(yellow, (825, 250))
             else:
                 screen.blit(red, (825, 250))
-            screen.blit(green, (825, 525))
+            frb = 0
+            for y in range(vehiclecount):
+                if ypos[y] in range(310, 500) and dirs[y] == 'up':
+                    frb = 1
+                    break
+            if frb == 1:
+                signalr = 'red'
+                screen.blit(red, (825, 525))
+
+            else:
+                signalr = 'green'
+                screen.blit(green, (825, 525))
+
             screen.blit(red, (500, 525))
         else:
             if fr == 0:
@@ -243,10 +262,6 @@ while running:
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
-            # if xpos[i]>=565 and xpos[i]<765:
-            #     block+=1
-            # if xpos[i]>=765:
-            #     block-=1
             if signall == 'red' or signall == 'yellow':
                 k = 0
                 for j in range(vehiclecount):
