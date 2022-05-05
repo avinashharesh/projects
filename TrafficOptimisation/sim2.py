@@ -2,6 +2,7 @@ import pygame
 import random
 import time
 
+
 # initialize pygame
 pygame.init()
 
@@ -10,10 +11,10 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/up/car.png')
-bus = pygame.image.load('images/up/bus.png')
-bike = pygame.image.load('images/up/bike.png')
-truck = pygame.image.load('images/up/truck.png')
+car = pygame.image.load('images/down/car.png')
+bus = pygame.image.load('images/down/bus.png')
+bike = pygame.image.load('images/down/bike.png')
+truck = pygame.image.load('images/down/truck.png')
 green = pygame.image.load('images/signals/green.png')
 red = pygame.image.load('images/signals/red.png')
 yellow = pygame.image.load('images/signals/yellow.png')
@@ -30,10 +31,7 @@ def player(vehicle, x, y):
     screen.blit(vehicle, (x, y))
 
 
-ls = 0
 # generating vehciles
-
-
 def VehicleGenerate():
     dir = ''
     vehicle = ''
@@ -128,10 +126,19 @@ def VehicleGenerate():
         if num3 == 0:
             x = 570
             y = 750
+            num4 = random.randint(0, 3)
+            if num4 == 0:
+                turn = 'l'
+            else:
+                turn = 's'
         else:
             x = 640
             y = 750
-        turn = 's'
+            num4 = random.randint(0, 3)
+            if num4 == 0:
+                turn = 'r'
+            else:
+                turn = 's'
     return vehicle, x, y, dir, turn
 
 
@@ -157,8 +164,8 @@ temp = 0
 vehiclecount = 0
 vehiclel = []
 vehiclelcount = 0
-hell = 700
-hev = 5
+hell = 570
+hev = 750
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -170,7 +177,7 @@ while running:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
-    # screen.blit(car, (570, 310))
+    # screen.blit(car, (570, 520))
     # screen.blit(bus,(565-70*2,385))
     # screen.blit(bike, (495, 385))
     # screen.blit(car, (1350, 445))
@@ -180,19 +187,19 @@ while running:
     # screen.blit(car, (765, 250))
     # screen.blit(car, (765, 300))
     # screen.blit(bike, (hell, hev))
-    # if hev >= 390 and hev <= 410:
-    #     if hev == 390:
-    #         bike = pygame.transform.rotate(bike, -30)
-    #     elif hev == 400:
-    #         bike = pygame.transform.rotate(bike, -30)
+    # if hev <= 430 and hev >= 410:
+    #     if hev == 430:
+    #         bike = pygame.transform.rotate(bike, 30)
+    #     elif hev == 420:
+    #         bike = pygame.transform.rotate(bike, 30)
     #     elif hev == 410:
-    #         bike = pygame.transform.rotate(bike, -30)
-    #     hev += 1
+    #         bike = pygame.transform.rotate(bike, 30)
+    #     hev -= 1
     # else:
-    #     if hev > 410:
+    #     if hev < 410:
     #         hell -= 1
     #     else:
-    #         hev += 1
+    #         hev -= 1
 
     if counter < 0:
         if sg == 'l':
@@ -228,7 +235,7 @@ while running:
                 screen.blit(red, (500, 525))
             fdb = 0
             for m in range(vehiclecount):
-                if ypos[m] in range(490, 310, -1) and dirs[m] == 'down':
+                if ypos[m] in range(490, 310, -1) and dirs[m] == 'down' and turns[m] == 's':
                     fdb = 1
                     break
             if fdb == 1:
@@ -330,7 +337,7 @@ while running:
     for i in range(vehiclecount):
         if dirs[i] == 'left':
             if signall == 'red' or signall == 'yellow':
-                if xpos[i] > 530:
+                if xpos[i] > 496:
                     if turns[i] == 'l':
                         if xpos[i] >= 570 and xpos[i] <= 590:
                             if xpos[i] == 570:
@@ -369,9 +376,9 @@ while running:
                 else:
                     k = 0
                     for j in range(vehiclecount):
-                        if xpos[j] in range(465-100*k, 525-100*k) and j != i and ypos[j] == 385:
+                        if xpos[j] in range(435-100*k, 495-100*k) and j != i and ypos[j] == 385:
                             k += 1
-                    if xpos[i] >= 465-100*k and xpos[i] <= 525:
+                    if xpos[i] >= 435-100*k and xpos[i] <= 495:
                         xpos[i] = xpos[i]
                     else:
                         xpos[i] += 1
@@ -414,7 +421,7 @@ while running:
                             xpos[i] += 1
         elif dirs[i] == 'up':
             if signalu == 'red' or signalu == 'yellow':
-                if ypos[i] > 310:
+                if ypos[i] > 301:
                     if turns[i] == 'l':
                         if ypos[i] >= 320 and ypos[i] <= 340:
                             if ypos[i] == 320:
@@ -439,7 +446,7 @@ while running:
                                     vehicles[i], -30)
                             elif ypos[i] == 400:
                                 vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
+                                    vehicles[i], -30)
                             elif ypos[i] == 410:
                                 vehicles[i] = pygame.transform.rotate(
                                     vehicles[i], -30)
@@ -455,18 +462,18 @@ while running:
                     if xpos[i] == 765:
                         k3 = 0
                         for m in range(vehiclecount):
-                            if ypos[m] in range(250-100*k3, 300-100*k3) and m != i and xpos[m] == 765:
+                            if ypos[m] in range(240-100*k3, 300-100*k3) and m != i and xpos[m] == 765:
                                 k3 += 1
-                        if ypos[i] >= 250-100*k3 and ypos[i] <= 300:
+                        if ypos[i] >= 240-100*k3 and ypos[i] <= 300:
                             ypos[i] = ypos[i]
                         else:
                             ypos[i] += 1
                     else:
                         k4 = 0
                         for e in range(vehiclecount):
-                            if ypos[e] in range(250-100*k4, 300-100*k4) and e != i and xpos[e] == 700:
+                            if ypos[e] in range(240-100*k4, 300-100*k4) and e != i and xpos[e] == 700:
                                 k4 += 1
-                        if ypos[i] >= 250-100*k4 and ypos[i] <= 300:
+                        if ypos[i] >= 240-100*k4 and ypos[i] <= 300:
                             ypos[i] = ypos[i]
                         else:
                             ypos[i] += 1
@@ -509,7 +516,7 @@ while running:
                     ypos[i] += 1
         elif dirs[i] == 'right':
             if signalr == 'red' or signalr == 'yellow':
-                if xpos[i] < 770:
+                if xpos[i] < 799:
                     if turns[i] == 'r':
                         if xpos[i] <= 610 and xpos[i] >= 590:
                             if xpos[i] == 610:
@@ -549,9 +556,9 @@ while running:
                 else:
                     k2 = 0
                     for l in range(vehiclecount):
-                        if xpos[l] in range(835+100*k2, 775+100*k2, -1) and l != i and ypos[l] == 445:
+                        if xpos[l] in range(860+100*k2, 800+100*k2, -1) and l != i and ypos[l] == 445:
                             k2 += 1
-                    if xpos[i] <= 835+100*k2 and xpos[i] >= 775:
+                    if xpos[i] <= 860+100*k2 and xpos[i] >= 800:
                         xpos[i] = xpos[i]
                     else:
                         xpos[i] -= 1
@@ -594,26 +601,99 @@ while running:
                             xpos[i] -= 1
         else:
             if signald == 'red' or signald == 'yellow':
-                if xpos[i] == 640:
-                    k5 = 0
-                    for p in range(vehiclecount):
-                        if ypos[p] in range(535+100*k5, 490+100*k5, -1) and p != i and xpos[p] == 640:
-                            k5 += 1
-                    if ypos[i] <= 535+100*k5 and ypos[i] >= 490:
-                        ypos[i] = ypos[i]
+                if ypos[i] < 519:
+                    if turns[i] == 'l':
+                        if ypos[i] <= 430 and ypos[i] >= 410:
+                            if ypos[i] == 430:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], 30)
+                            elif ypos[i] == 420:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], 30)
+                            elif ypos[i] == 410:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], 30)
+                            ypos[i] -= 1
+                        else:
+                            if ypos[i] < 410:
+                                xpos[i] -= 1
+                            else:
+                                ypos[i] -= 1
+                    elif turns[i] == 'r':
+                        if ypos[i] <= 360 and ypos[i] >= 340:
+                            if ypos[i] == 360:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], -30)
+                            elif ypos[i] == 350:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], -30)
+                            elif ypos[i] == 340:
+                                vehicles[i] = pygame.transform.rotate(
+                                    vehicles[i], -30)
+                            ypos[i] -= 1
+                        else:
+                            if ypos[i] < 340:
+                                xpos[i] += 1
+                            else:
+                                ypos[i] -= 1
                     else:
                         ypos[i] -= 1
                 else:
-                    k6 = 0
-                    for q in range(vehiclecount):
-                        if ypos[q] in range(535+100*k6, 490+100*k6, -1) and q != i and xpos[q] == 570:
-                            k6 += 1
-                    if ypos[i] <= 535+100*k6 and ypos[i] >= 490:
-                        ypos[i] = ypos[i]
+                    if xpos[i] == 640:
+                        k5 = 0
+                        for p in range(vehiclecount):
+                            if ypos[p] in range(580+100*k5, 520+100*k5, -1) and p != i and xpos[p] == 640:
+                                k5 += 1
+                        if ypos[i] <= 580+100*k5 and ypos[i] >= 520:
+                            ypos[i] = ypos[i]
+                        else:
+                            ypos[i] -= 1
                     else:
-                        ypos[i] -= 1
+                        k6 = 0
+                        for q in range(vehiclecount):
+                            if ypos[q] in range(580+100*k6, 520+100*k6, -1) and q != i and xpos[q] == 570:
+                                k6 += 1
+                        if ypos[i] <= 580+100*k6 and ypos[i] >= 520:
+                            ypos[i] = ypos[i]
+                        else:
+                            ypos[i] -= 1
             else:
-                ypos[i] -= 1
+                if turns[i] == 'l':
+                    if ypos[i] <= 430 and ypos[i] >= 410:
+                        if ypos[i] == 430:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], 30)
+                        elif ypos[i] == 420:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], 30)
+                        elif ypos[i] == 410:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], 30)
+                        ypos[i] -= 1
+                    else:
+                        if ypos[i] < 410:
+                            xpos[i] -= 1
+                        else:
+                            ypos[i] -= 1
+                elif turns[i] == 'r':
+                    if ypos[i] <= 360 and ypos[i] >= 340:
+                        if ypos[i] == 360:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], -30)
+                        elif ypos[i] == 350:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], -30)
+                        elif ypos[i] == 340:
+                            vehicles[i] = pygame.transform.rotate(
+                                vehicles[i], -30)
+                        ypos[i] -= 1
+                    else:
+                        if ypos[i] < 340:
+                            xpos[i] += 1
+                        else:
+                            ypos[i] -= 1
+                else:
+                    ypos[i] -= 1
     if vehiclegen <= 0:
         v, x, y, dir, turn = VehicleGenerate()
         if dir == 'left':
