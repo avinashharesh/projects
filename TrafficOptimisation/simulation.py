@@ -446,7 +446,7 @@ while running:
                                     vehicles[i], -30)
                             elif ypos[i] == 400:
                                 vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
+                                    vehicles[i], -30)
                             elif ypos[i] == 410:
                                 vehicles[i] = pygame.transform.rotate(
                                     vehicles[i], -30)
