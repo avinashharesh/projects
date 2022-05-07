@@ -11,10 +11,22 @@ screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
 # player
-car = pygame.image.load('images/left/car.png')
-bus = pygame.image.load('images/left/bus.png')
-bike = pygame.image.load('images/left/bike.png')
-truck = pygame.image.load('images/left/truck.png')
+carl = pygame.image.load('images/left/car.png')
+carr = pygame.image.load('images/right/car.png')
+caru = pygame.image.load('images/up/car.png')
+card = pygame.image.load('images/down/car.png')
+busl = pygame.image.load('images/left/bus.png')
+busr = pygame.image.load('images/right/bus.png')
+busd = pygame.image.load('images/down/bus.png')
+busu = pygame.image.load('images/up/bus.png')
+truckl = pygame.image.load('images/left/truck.png')
+truckr = pygame.image.load('images/right/bike.png')
+truckd = pygame.image.load('images/down/bike.png')
+trucku = pygame.image.load('images/up/bike.png')
+bikel = pygame.image.load('images/left/bike.png')
+biker = pygame.image.load('images/right/bike.png')
+biked = pygame.image.load('images/down/bike.png')
+bikeu = pygame.image.load('images/up/bike.png')
 green = pygame.image.load('images/signals/green.png')
 red = pygame.image.load('images/signals/red.png')
 yellow = pygame.image.load('images/signals/yellow.png')
@@ -30,27 +42,9 @@ signald = ""
 def player(vehicle, x, y):
     screen.blit(vehicle, (x, y))
 
-
-# def rot_center(image, angle):
-#     """rotate an image while keeping its center and size"""
-#     orig_rect = image.get_rect()
-#     rot_image = pygame.transform.rotate(image, angle)
-#     rot_rect = orig_rect.copy()
-#     rot_rect.center = rot_image.get_rect().center
-#     rot_image = rot_image.subsurface(rot_rect).copy()
-#     return rot_image
-
-def rot_center(image, angle):
-    """rotate an image while keeping its center and size"""
-    orig_rect = image.get_rect()
-    rot_image = pygame.transform.rotate(image, angle)
-    rot_rect = orig_rect.copy()
-    rot_rect.center = rot_image.get_rect().center
-    rot_image = rot_image.subsurface(rot_rect).copy()
-    return rot_image
-
-
 # generating vehciles
+
+
 def VehicleGenerate():
     dir = ''
     vehicle = ''
@@ -69,16 +63,16 @@ def VehicleGenerate():
     if dir == 'left':
         num2 = random.randint(0, 3)
         if num2 == 0:
-            vehicle = pygame.image.load('images/left/car.png')
+            vehicle = carl
         elif num2 == 1:
-            vehicle = pygame.image.load('images/left/bike.png')
+            vehicle = bikel
         elif num2 == 2:
-            vehicle = pygame.image.load('images/left/bus.png')
+            vehicle = busl
         else:
-            vehicle = pygame.image.load('images/left/truck.png')
+            vehicle = truckl
         x = 10
         y = 385
-        num3 = random.randint(0, 2)
+        num3 = random.randint(0, 6)
         if num3 == 0:
             turn = 'l'
         elif num3 == 1:
@@ -88,18 +82,18 @@ def VehicleGenerate():
     elif dir == 'up':
         num2 = random.randint(0, 3)
         if num2 == 0:
-            vehicle = pygame.image.load('images/up/car.png')
+            vehicle = caru
         elif num2 == 1:
-            vehicle = pygame.image.load('images/up/bike.png')
+            vehicle = bikeu
         elif num2 == 2:
-            vehicle = pygame.image.load('images/up/bus.png')
+            vehicle = busu
         else:
-            vehicle = pygame.image.load('images/up/truck.png')
+            vehicle = trucku
         num3 = random.randint(0, 1)
         if num3 == 0:
             x = 765
             y = 5
-            num4 = random.randint(0, 2)
+            num4 = random.randint(0, 4)
             if num4 == 0:
                 turn = 'l'
             else:
@@ -107,7 +101,7 @@ def VehicleGenerate():
         else:
             x = 700
             y = 5
-            num4 = random.randint(0, 2)
+            num4 = random.randint(0, 4)
             if num4 == 0:
                 turn = 'r'
             else:
@@ -115,16 +109,16 @@ def VehicleGenerate():
     elif dir == 'right':
         num2 = random.randint(0, 3)
         if num2 == 0:
-            vehicle = pygame.image.load('images/right/car.png')
+            vehicle = carr
         elif num2 == 1:
-            vehicle = pygame.image.load('images/right/bike.png')
+            vehicle = biker
         elif num2 == 2:
-            vehicle = pygame.image.load('images/right/bus.png')
+            vehicle = busr
         else:
-            vehicle = pygame.image.load('images/right/truck.png')
+            vehicle = truckr
         x = 1350
         y = 445
-        num3 = random.randint(0, 2)
+        num3 = random.randint(0, 6)
         if num3 == 0:
             turn = 'l'
         elif num3 == 1:
@@ -134,26 +128,26 @@ def VehicleGenerate():
     else:
         num2 = random.randint(0, 3)
         if num2 == 0:
-            vehicle = pygame.image.load('images/down/car.png')
+            vehicle = card
         elif num2 == 1:
-            vehicle = pygame.image.load('images/down/bike.png')
+            vehicle = biked
         elif num2 == 2:
-            vehicle = pygame.image.load('images/down/bus.png')
+            vehicle = busd
         else:
-            vehicle = pygame.image.load('images/down/truck.png')
+            vehicle = truckd
         num3 = random.randint(0, 1)
         if num3 == 0:
             x = 570
-            y = 750
-            num4 = random.randint(0, 3)
+            y = 760
+            num4 = random.randint(0, 4)
             if num4 == 0:
                 turn = 'l'
             else:
                 turn = 's'
         else:
             x = 640
-            y = 750
-            num4 = random.randint(0, 3)
+            y = 760
+            num4 = random.randint(0, 4)
             if num4 == 0:
                 turn = 'r'
             else:
@@ -383,15 +377,15 @@ while running:
                                 xpos[i] += 1
                     elif turns[i] == 'r':
                         if xpos[i] >= 635 and xpos[i] <= 655:
+                            pos1 = pygame.transform.rotate(vehicles[i], -30)
+                            pos2 = pygame.transform.rotate(vehicles[i], -30)
+                            pos3 = pygame.transform.rotate(vehicles[i], -30)
                             if xpos[i] == 635:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], -30)
+                                vehicles[i] = pos1
                             elif xpos[i] == 645:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], -30)
+                                vehicles[i] = pos2
                             elif xpos[i] == 655:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], -30)
+                                vehicles[i] = pos3
                             xpos[i] += 1
                         else:
                             if xpos[i] > 655:
@@ -435,15 +429,15 @@ while running:
                             xpos[i] += 1
                 else:
                     if xpos[i] >= 635 and xpos[i] <= 655:
+                        pos1 = pygame.transform.rotate(vehicles[i], -30)
+                        pos2 = pygame.transform.rotate(vehicles[i], -30)
+                        pos3 = pygame.transform.rotate(vehicles[i], -30)
                         if xpos[i] == 635:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], -30)
+                            vehicles[i] = pos1
                         elif xpos[i] == 645:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], -30)
+                            vehicles[i] = pos2
                         elif xpos[i] == 655:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], -30)
+                            vehicles[i] = pos3
                         xpos[i] += 1
                     else:
                         if xpos[i] > 655:
@@ -517,15 +511,15 @@ while running:
             else:
                 if turns[i] == 'l':
                     if ypos[i] >= 320 and ypos[i] <= 340:
+                        pos1 = pygame.transform.rotate(vehicles[i], 30)
+                        pos2 = pygame.transform.rotate(vehicles[i], 30)
+                        pos3 = pygame.transform.rotate(vehicles[i], 30)
                         if ypos[i] == 320:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
+                            vehicles[i] = pos1
                         elif ypos[i] == 330:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
+                            vehicles[i] = pos2
                         elif ypos[i] == 340:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
+                            vehicles[i] = pos3
                         ypos[i] += 1
                     else:
                         if ypos[i] > 340:
@@ -801,7 +795,7 @@ while running:
         else:
             fw = 0
             for w in range(vehiclecount):
-                if ypos[w] in range(750, 680, -1) and (xpos[w] == 570 or xpos[w] == 640):
+                if ypos[w] in range(762, 680, -1) and (xpos[w] == 570 or xpos[w] == 640):
                     fw = 1
                     break
             if fw == 0:
