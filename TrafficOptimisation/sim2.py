@@ -10,47 +10,59 @@ pygame.init()
 screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection2.png')
 
-# player
+# players
 carl = pygame.image.load('images/left/car.png')
-carll30=pygame.image.load('images/left/carl30.png')
-carll60=pygame.image.load('images/left/carl60.png')
-carll90=pygame.image.load('images/left/carl90.png')
+carll30 = pygame.image.load('images/left/carl30.png')
+carll60 = pygame.image.load('images/left/carl60.png')
+carll90 = pygame.image.load('images/left/carl90.png')
 carr = pygame.image.load('images/right/car.png')
 caru = pygame.image.load('images/up/car.png')
+carul30 = pygame.image.load('images/up/carl30.png')
+carul60 = pygame.image.load('images/up/carl60.png')
+carul90 = pygame.image.load('images/up/carl90.png')
 card = pygame.image.load('images/down/car.png')
-cardl30=pygame.image.load('images/down/carl30.png')
-cardl60=pygame.image.load('images/down/carl60.png')
-cardl90=pygame.image.load('images/down/carl90.png')
+cardl30 = pygame.image.load('images/down/carl30.png')
+cardl60 = pygame.image.load('images/down/carl60.png')
+cardl90 = pygame.image.load('images/down/carl90.png')
 busl = pygame.image.load('images/left/bus.png')
-busll30=pygame.image.load('images/left/busl30.png')
-busll60=pygame.image.load('images/left/busl60.png')
-busll90=pygame.image.load('images/left/busl90.png')
+busll30 = pygame.image.load('images/left/busl30.png')
+busll60 = pygame.image.load('images/left/busl60.png')
+busll90 = pygame.image.load('images/left/busl90.png')
 busr = pygame.image.load('images/right/bus.png')
 busd = pygame.image.load('images/down/bus.png')
-busdl30=pygame.image.load('images/down/busl30.png')
-busdl60=pygame.image.load('images/down/busl60.png')
-busdl90=pygame.image.load('images/down/busl90.png')
+busdl30 = pygame.image.load('images/down/busl30.png')
+busdl60 = pygame.image.load('images/down/busl60.png')
+busdl90 = pygame.image.load('images/down/busl90.png')
 busu = pygame.image.load('images/up/bus.png')
+busul30 = pygame.image.load('images/up/busl30.png')
+busul60 = pygame.image.load('images/up/busl60.png')
+busul90 = pygame.image.load('images/up/busl90.png')
 truckl = pygame.image.load('images/left/truck.png')
-truckll30=pygame.image.load('images/left/truckl30.png')
-truckll60=pygame.image.load('images/left/truckl60.png')
-truckll90=pygame.image.load('images/left/truckl90.png')
+truckll30 = pygame.image.load('images/left/truckl30.png')
+truckll60 = pygame.image.load('images/left/truckl60.png')
+truckll90 = pygame.image.load('images/left/truckl90.png')
 truckr = pygame.image.load('images/right/truck.png')
 truckd = pygame.image.load('images/down/truck.png')
-truckdl30=pygame.image.load('images/down/truckl30.png')
-truckdl60=pygame.image.load('images/down/truckl60.png')
-truckdl90=pygame.image.load('images/down/truckl90.png')
+truckdl30 = pygame.image.load('images/down/truckl30.png')
+truckdl60 = pygame.image.load('images/down/truckl60.png')
+truckdl90 = pygame.image.load('images/down/truckl90.png')
 trucku = pygame.image.load('images/up/truck.png')
+truckul30 = pygame.image.load('images/up/truckl30.png')
+truckul60 = pygame.image.load('images/up/truckl60.png')
+truckul90 = pygame.image.load('images/up/truckl90.png')
 bikel = pygame.image.load('images/left/bike.png')
-bikell30=pygame.image.load('images/left/bikel30.png')
-bikell60=pygame.image.load('images/left/bikel60.png')
-bikell90=pygame.image.load('images/left/bikel90.png')
+bikell30 = pygame.image.load('images/left/bikel30.png')
+bikell60 = pygame.image.load('images/left/bikel60.png')
+bikell90 = pygame.image.load('images/left/bikel90.png')
 biker = pygame.image.load('images/right/bike.png')
 biked = pygame.image.load('images/down/bike.png')
-bikedl30=pygame.image.load('images/down/bikel30.png')
-bikedl60=pygame.image.load('images/down/bikel60.png')
-bikedl90=pygame.image.load('images/down/bikel90.png')
+bikedl30 = pygame.image.load('images/down/bikel30.png')
+bikedl60 = pygame.image.load('images/down/bikel60.png')
+bikedl90 = pygame.image.load('images/down/bikel90.png')
 bikeu = pygame.image.load('images/up/bike.png')
+bikeul30 = pygame.image.load('images/up/bikel30.png')
+bikeul60 = pygame.image.load('images/up/bikel60.png')
+bikeul90 = pygame.image.load('images/up/bikel90.png')
 green = pygame.image.load('images/signals/green.png')
 red = pygame.image.load('images/signals/red.png')
 yellow = pygame.image.load('images/signals/yellow.png')
@@ -384,34 +396,34 @@ while running:
                     if turns[i] == 'l':
                         if xpos[i] >= 560 and xpos[i] <= 580:
                             if xpos[i] == 560:
-                                if vehicles[i]==carl:
-                                    vehicles[i]=carll30
-                                elif vehicles[i]==busl:
-                                    vehicles[i]=busll30
-                                elif vehicles[i]==truckl:
-                                    vehicles[i]=truckll30
-                                elif vehicles[i]==bikel:
-                                    vehicles[i]=bikell30
+                                if vehicles[i] == carl:
+                                    vehicles[i] = carll30
+                                elif vehicles[i] == busl:
+                                    vehicles[i] = busll30
+                                elif vehicles[i] == truckl:
+                                    vehicles[i] = truckll30
+                                elif vehicles[i] == bikel:
+                                    vehicles[i] = bikell30
                             elif xpos[i] == 570:
-                                if vehicles[i]==carll30:
-                                    vehicles[i]=carll60
-                                elif vehicles[i]==busll30:
-                                    vehicles[i]=busll60
-                                elif vehicles[i]==truckll30:
-                                    vehicles[i]=truckll60
-                                elif vehicles[i]==bikell30:
-                                    vehicles[i]=bikell60
+                                if vehicles[i] == carll30:
+                                    vehicles[i] = carll60
+                                elif vehicles[i] == busll30:
+                                    vehicles[i] = busll60
+                                elif vehicles[i] == truckll30:
+                                    vehicles[i] = truckll60
+                                elif vehicles[i] == bikell30:
+                                    vehicles[i] = bikell60
                             elif xpos[i] == 580:
-                                if vehicles[i]==carll60:
-                                    vehicles[i]=carll90
-                                elif vehicles[i]==busll60:
-                                    vehicles[i]=busll90
-                                elif vehicles[i]==truckll60:
-                                    vehicles[i]=truckll90
-                                elif vehicles[i]==bikell60:
-                                    vehicles[i]=bikell90
+                                if vehicles[i] == carll60:
+                                    vehicles[i] = carll90
+                                elif vehicles[i] == busll60:
+                                    vehicles[i] = busll90
+                                elif vehicles[i] == truckll60:
+                                    vehicles[i] = truckll90
+                                elif vehicles[i] == bikell60:
+                                    vehicles[i] = bikell90
                             xpos[i] += 1
-                            ypos[i]-=2
+                            ypos[i] -= 2
                         else:
                             if xpos[i] > 580:
                                 if ypos[i] <= 310:
@@ -455,34 +467,34 @@ while running:
                 elif turns[i] == 'l':
                     if xpos[i] >= 560 and xpos[i] <= 580:
                         if xpos[i] == 560:
-                            if vehicles[i]==carl:
-                                vehicles[i]=carll30
-                            elif vehicles[i]==busl:
-                                vehicles[i]=busll30
-                            elif vehicles[i]==truckl:
-                                vehicles[i]=truckll30
-                            elif vehicles[i]==bikel:
-                                vehicles[i]=bikell30
+                            if vehicles[i] == carl:
+                                vehicles[i] = carll30
+                            elif vehicles[i] == busl:
+                                vehicles[i] = busll30
+                            elif vehicles[i] == truckl:
+                                vehicles[i] = truckll30
+                            elif vehicles[i] == bikel:
+                                vehicles[i] = bikell30
                         elif xpos[i] == 570:
-                            if vehicles[i]==carll30:
-                                vehicles[i]=carll60
-                            elif vehicles[i]==busll30:
-                                vehicles[i]=busll60
-                            elif vehicles[i]==truckll30:
-                                vehicles[i]=truckll60
-                            elif vehicles[i]==bikell30:
-                                vehicles[i]=bikell60
+                            if vehicles[i] == carll30:
+                                vehicles[i] = carll60
+                            elif vehicles[i] == busll30:
+                                vehicles[i] = busll60
+                            elif vehicles[i] == truckll30:
+                                vehicles[i] = truckll60
+                            elif vehicles[i] == bikell30:
+                                vehicles[i] = bikell60
                         elif xpos[i] == 580:
-                            if vehicles[i]==carll60:
-                                vehicles[i]=carll90
-                            elif vehicles[i]==busll60:
-                                vehicles[i]=busll90
-                            elif vehicles[i]==truckll60:
-                                vehicles[i]=truckll90
-                            elif vehicles[i]==bikell60:
-                                vehicles[i]=bikell90
-                        xpos[i] +=1 
-                        ypos[i]-=2
+                            if vehicles[i] == carll60:
+                                vehicles[i] = carll90
+                            elif vehicles[i] == busll60:
+                                vehicles[i] = busll90
+                            elif vehicles[i] == truckll60:
+                                vehicles[i] = truckll90
+                            elif vehicles[i] == bikell60:
+                                vehicles[i] = bikell90
+                        xpos[i] += 1
+                        ypos[i] -= 2
                     else:
                         if xpos[i] > 580:
                             if ypos[i] <= 310:
@@ -513,19 +525,38 @@ while running:
             if signalu == 'red' or signalu == 'yellow':
                 if ypos[i] > 301:
                     if turns[i] == 'l':
-                        if ypos[i] >= 320 and ypos[i] <= 340:
-                            if ypos[i] == 320:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
-                            elif ypos[i] == 330:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
-                            elif ypos[i] == 340:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
+                        if ypos[i] >= 360 and ypos[i] <= 380:
+                            if ypos[i] == 360:
+                                if vehicles[i] == caru:
+                                    vehicles[i] = carul30
+                                elif vehicles[i] == busu:
+                                    vehicles[i] = busul30
+                                elif vehicles[i] == trucku:
+                                    vehicles[i] = truckul30
+                                elif vehicles[i] == bikeu:
+                                    vehicles[i] = bikeul30
+                            elif ypos[i] == 370:
+                                if vehicles[i] == carul30:
+                                    vehicles[i] = carul60
+                                elif vehicles[i] == busul30:
+                                    vehicles[i] = busul60
+                                elif vehicles[i] == truckul30:
+                                    vehicles[i] = truckul60
+                                elif vehicles[i] == bikeul30:
+                                    vehicles[i] = bikeul60
+                            elif ypos[i] == 380:
+                                if vehicles[i] == carul60:
+                                    vehicles[i] = carul90
+                                elif vehicles[i] == busul60:
+                                    vehicles[i] = busul90
+                                elif vehicles[i] == truckul60:
+                                    vehicles[i] = truckul90
+                                elif vehicles[i] == bikeul60:
+                                    vehicles[i] = bikeul90
                             ypos[i] += 1
+                            xpos[i] += 2
                         else:
-                            if ypos[i] > 340:
+                            if ypos[i] > 380:
                                 if xpos[i] >= 765:
                                     turned[i] = 1
                                 xpos[i] += 1
@@ -573,19 +604,38 @@ while running:
                             ypos[i] += 1
             else:
                 if turns[i] == 'l':
-                    if ypos[i] >= 320 and ypos[i] <= 340:
-                        pos1 = pygame.transform.rotate(vehicles[i], 30)
-                        pos2 = pygame.transform.rotate(vehicles[i], 30)
-                        pos3 = pygame.transform.rotate(vehicles[i], 30)
-                        if ypos[i] == 320:
-                            vehicles[i] = pos1
-                        elif ypos[i] == 330:
-                            vehicles[i] = pos2
-                        elif ypos[i] == 340:
-                            vehicles[i] = pos3
+                    if ypos[i] >= 360 and ypos[i] <= 380:
+                        if ypos[i] == 360:
+                            if vehicles[i] == caru:
+                                vehicles[i] = carul30
+                            elif vehicles[i] == busu:
+                                vehicles[i] = busul30
+                            elif vehicles[i] == trucku:
+                                vehicles[i] = truckul30
+                            elif vehicles[i] == bikeu:
+                                vehicles[i] = bikeul30
+                        elif ypos[i] == 370:
+                            if vehicles[i] == carul30:
+                                vehicles[i] = carul60
+                            elif vehicles[i] == busul30:
+                                vehicles[i] = busul60
+                            elif vehicles[i] == truckul30:
+                                vehicles[i] = truckul60
+                            elif vehicles[i] == bikeul30:
+                                vehicles[i] = bikeul60
+                        elif ypos[i] == 380:
+                            if vehicles[i] == carul60:
+                                vehicles[i] = carul90
+                            elif vehicles[i] == busul60:
+                                vehicles[i] = busul90
+                            elif vehicles[i] == truckul60:
+                                vehicles[i] = truckul90
+                            elif vehicles[i] == bikeul60:
+                                vehicles[i] = bikeul90
                         ypos[i] += 1
+                        xpos[i] += 2
                     else:
-                        if ypos[i] > 340:
+                        if ypos[i] > 380:
                             if xpos[i] >= 765:
                                 turned[i] = 1
                             xpos[i] += 1
@@ -710,35 +760,35 @@ while running:
                 if ypos[i] < 519:
                     if turns[i] == 'l':
                         if ypos[i] <= 470 and ypos[i] >= 450:
-                            if ypos[i] ==470:
-                                if vehicles[i]==card:
-                                    vehicles[i]=cardl30
-                                elif vehicles[i]==busd:
-                                    vehicles[i]=busdl30
-                                elif vehicles[i]==truckd:
-                                    vehicles[i]=truckdl30
-                                elif vehicles[i]==biked:
-                                    vehicles[i]=bikedl30
-                            elif ypos[i] ==460:
-                                if vehicles[i]==cardl30:
-                                    vehicles[i]=cardl60
-                                elif vehicles[i]==busdl30:
-                                    vehicles[i]=busdl60
-                                elif vehicles[i]==truckdl30:
-                                    vehicles[i]=truckdl60
-                                elif vehicles[i]==bikedl30:
-                                    vehicles[i]=bikedl60
-                            elif ypos[i]==450:
-                                if vehicles[i]==cardl60:
-                                    vehicles[i]=cardl90
-                                elif vehicles[i]==busdl60:
-                                    vehicles[i]=busdl90
-                                elif vehicles[i]==truckdl60:
-                                    vehicles[i]=truckdl90
-                                elif vehicles[i]==bikedl60:
-                                    vehicles[i]=bikedl90
+                            if ypos[i] == 470:
+                                if vehicles[i] == card:
+                                    vehicles[i] = cardl30
+                                elif vehicles[i] == busd:
+                                    vehicles[i] = busdl30
+                                elif vehicles[i] == truckd:
+                                    vehicles[i] = truckdl30
+                                elif vehicles[i] == biked:
+                                    vehicles[i] = bikedl30
+                            elif ypos[i] == 460:
+                                if vehicles[i] == cardl30:
+                                    vehicles[i] = cardl60
+                                elif vehicles[i] == busdl30:
+                                    vehicles[i] = busdl60
+                                elif vehicles[i] == truckdl30:
+                                    vehicles[i] = truckdl60
+                                elif vehicles[i] == bikedl30:
+                                    vehicles[i] = bikedl60
+                            elif ypos[i] == 450:
+                                if vehicles[i] == cardl60:
+                                    vehicles[i] = cardl90
+                                elif vehicles[i] == busdl60:
+                                    vehicles[i] = busdl90
+                                elif vehicles[i] == truckdl60:
+                                    vehicles[i] = truckdl90
+                                elif vehicles[i] == bikedl60:
+                                    vehicles[i] = bikedl90
                             ypos[i] -= 1
-                            xpos[i]-=2
+                            xpos[i] -= 2
                         else:
                             if ypos[i] < 450:
                                 if xpos[i] <= 520:
@@ -789,35 +839,35 @@ while running:
             else:
                 if turns[i] == 'l':
                     if ypos[i] <= 470 and ypos[i] >= 450:
-                        if ypos[i] ==470:
-                            if vehicles[i]==card:
-                                vehicles[i]=cardl30
-                            elif vehicles[i]==busd:
-                                vehicles[i]=busdl30
-                            elif vehicles[i]==truckd:
-                                vehicles[i]=truckdl30
-                            elif vehicles[i]==biked:
-                                vehicles[i]=bikedl30
-                        elif ypos[i] ==460:
-                            if vehicles[i]==cardl30:
-                                vehicles[i]=cardl60
-                            elif vehicles[i]==busdl30:
-                                vehicles[i]=busdl60
-                            elif vehicles[i]==truckdl30:
-                                vehicles[i]=truckdl60
-                            elif vehicles[i]==bikedl30:
-                                vehicles[i]=bikedl60
-                        elif ypos[i]==450:
-                            if vehicles[i]==cardl60:
-                                vehicles[i]=cardl90
-                            elif vehicles[i]==busdl60:
-                                vehicles[i]=busdl90
-                            elif vehicles[i]==truckdl60:
-                                vehicles[i]=truckdl90
-                            elif vehicles[i]==bikedl60:
-                                vehicles[i]=bikedl90
+                        if ypos[i] == 470:
+                            if vehicles[i] == card:
+                                vehicles[i] = cardl30
+                            elif vehicles[i] == busd:
+                                vehicles[i] = busdl30
+                            elif vehicles[i] == truckd:
+                                vehicles[i] = truckdl30
+                            elif vehicles[i] == biked:
+                                vehicles[i] = bikedl30
+                        elif ypos[i] == 460:
+                            if vehicles[i] == cardl30:
+                                vehicles[i] = cardl60
+                            elif vehicles[i] == busdl30:
+                                vehicles[i] = busdl60
+                            elif vehicles[i] == truckdl30:
+                                vehicles[i] = truckdl60
+                            elif vehicles[i] == bikedl30:
+                                vehicles[i] = bikedl60
+                        elif ypos[i] == 450:
+                            if vehicles[i] == cardl60:
+                                vehicles[i] = cardl90
+                            elif vehicles[i] == busdl60:
+                                vehicles[i] = busdl90
+                            elif vehicles[i] == truckdl60:
+                                vehicles[i] = truckdl90
+                            elif vehicles[i] == bikedl60:
+                                vehicles[i] = bikedl90
                         ypos[i] -= 1
-                        xpos[i]-=2
+                        xpos[i] -= 2
                     else:
                         if ypos[i] < 450:
                             if xpos[i] <= 520:
