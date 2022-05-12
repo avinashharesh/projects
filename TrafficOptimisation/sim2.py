@@ -16,6 +16,9 @@ carll30 = pygame.image.load('images/left/carl30.png')
 carll60 = pygame.image.load('images/left/carl60.png')
 carll90 = pygame.image.load('images/left/carl90.png')
 carr = pygame.image.load('images/right/car.png')
+carrl30=pygame.image.load('images/right/carl30.png')
+carrl60=pygame.image.load('images/right/carl60.png')
+carrl90=pygame.image.load('images/right/carl90.png')
 caru = pygame.image.load('images/up/car.png')
 carul30 = pygame.image.load('images/up/carl30.png')
 carul60 = pygame.image.load('images/up/carl60.png')
@@ -29,6 +32,9 @@ busll30 = pygame.image.load('images/left/busl30.png')
 busll60 = pygame.image.load('images/left/busl60.png')
 busll90 = pygame.image.load('images/left/busl90.png')
 busr = pygame.image.load('images/right/bus.png')
+busrl30=pygame.image.load('images/right/busl30.png')
+busrl60=pygame.image.load('images/right/busl60.png')
+busrl90=pygame.image.load('images/right/busl90.png')
 busd = pygame.image.load('images/down/bus.png')
 busdl30 = pygame.image.load('images/down/busl30.png')
 busdl60 = pygame.image.load('images/down/busl60.png')
@@ -42,6 +48,9 @@ truckll30 = pygame.image.load('images/left/truckl30.png')
 truckll60 = pygame.image.load('images/left/truckl60.png')
 truckll90 = pygame.image.load('images/left/truckl90.png')
 truckr = pygame.image.load('images/right/truck.png')
+truckrl30=pygame.image.load('images/right/truckl30.png')
+truckrl60=pygame.image.load('images/right/truckl60.png')
+truckrl90=pygame.image.load('images/right/truckl90.png')
 truckd = pygame.image.load('images/down/truck.png')
 truckdl30 = pygame.image.load('images/down/truckl30.png')
 truckdl60 = pygame.image.load('images/down/truckl60.png')
@@ -55,6 +64,9 @@ bikell30 = pygame.image.load('images/left/bikel30.png')
 bikell60 = pygame.image.load('images/left/bikel60.png')
 bikell90 = pygame.image.load('images/left/bikel90.png')
 biker = pygame.image.load('images/right/bike.png')
+bikerl30=pygame.image.load('images/right/bikel30.png')
+bikerl60=pygame.image.load('images/right/bikel60.png')
+bikerl90=pygame.image.load('images/right/bikel90.png')
 biked = pygame.image.load('images/down/bike.png')
 bikedl30 = pygame.image.load('images/down/bikel30.png')
 bikedl60 = pygame.image.load('images/down/bikel60.png')
@@ -685,19 +697,38 @@ while running:
                             else:
                                 xpos[i] -= 1
                     elif turns[i] == 'l':
-                        if xpos[i] <= 740 and xpos[i] >= 720:
-                            if xpos[i] == 740:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
-                            elif xpos[i] == 730:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
-                            elif xpos[i] == 720:
-                                vehicles[i] = pygame.transform.rotate(
-                                    vehicles[i], 30)
+                        if xpos[i] <= 780 and xpos[i] >= 760:
+                            if xpos[i] == 780:
+                                if vehicles[i]==carr:
+                                    vehicles[i]=carrl30
+                                elif vehicles[i]==busr:
+                                    vehicles[i]=busrl30
+                                elif vehicles[i]==biker:
+                                    vehicles[i]=bikerl30
+                                elif vehicles[i]==truckr:
+                                    vehicles[i]=truckrl30
+                            elif xpos[i] == 770:
+                                if vehicles[i]==carrl30:
+                                    vehicles[i]=carrl60
+                                elif vehicles[i]==busrl30:
+                                    vehicles[i]=busrl60
+                                elif vehicles[i]==bikerl30:
+                                    vehicles[i]=bikerl60
+                                elif vehicles[i]==truckrl30:
+                                    vehicles[i]=truckrl60
+                            elif xpos[i] == 760:
+                                if vehicles[i]==carrl60:
+                                    vehicles[i]=carrl90
+                                elif vehicles[i]==busrl60:
+                                    vehicles[i]=busrl90
+                                elif vehicles[i]==bikerl60:
+                                    vehicles[i]=bikerl90
+                                elif vehicles[i]==truckrl60:
+                                    vehicles[i]=truckrl90
                             xpos[i] -= 1
+                            ypos[i]+=2
                         else:
-                            if xpos[i] < 720:
+                            if xpos[i] < 760:
                                 if ypos[i] >= 500:
                                     turned[i] = 1
                                 ypos[i] += 1
@@ -737,19 +768,38 @@ while running:
                         else:
                             xpos[i] -= 1
                 else:
-                    if xpos[i] <= 740 and xpos[i] >= 720:
-                        if xpos[i] == 740:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
-                        elif xpos[i] == 730:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
-                        elif xpos[i] == 720:
-                            vehicles[i] = pygame.transform.rotate(
-                                vehicles[i], 30)
+                    if xpos[i] <= 780 and xpos[i] >= 760:
+                        if xpos[i] == 780:
+                            if vehicles[i]==carr:
+                                vehicles[i]=carrl30
+                            elif vehicles[i]==busr:
+                                vehicles[i]=busrl30
+                            elif vehicles[i]==biker:
+                                vehicles[i]=bikerl30
+                            elif vehicles[i]==truckr:
+                                vehicles[i]=truckrl30
+                        elif xpos[i] == 770:
+                            if vehicles[i]==carrl30:
+                                vehicles[i]=carrl60
+                            elif vehicles[i]==busrl30:
+                                vehicles[i]=busrl60
+                            elif vehicles[i]==bikerl30:
+                                vehicles[i]=bikerl60
+                            elif vehicles[i]==truckrl30:
+                                vehicles[i]=truckrl60
+                        elif xpos[i] == 760:
+                            if vehicles[i]==carrl60:
+                                vehicles[i]=carrl90
+                            elif vehicles[i]==busrl60:
+                                vehicles[i]=busrl90
+                            elif vehicles[i]==bikerl60:
+                                vehicles[i]=bikerl90
+                            elif vehicles[i]==truckrl60:
+                                vehicles[i]=truckrl90
                         xpos[i] -= 1
+                        ypos[i]+=2
                     else:
-                        if xpos[i] < 720:
+                        if xpos[i] < 760:
                             if ypos[i] >= 500:
                                 turned[i] = 1
                             ypos[i] += 1
