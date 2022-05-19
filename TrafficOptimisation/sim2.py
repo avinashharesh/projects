@@ -313,7 +313,7 @@ while running:
                 screen.blit(red, (825, 250))
             fdb = 0
             for m in range(vehiclecount):
-                if (ypos[m] in range(490, 310, -1) and dirs[m] == 'down' and turns[m] == 's') or (ypos[m] in range(310, 500) and dirs[m] == 'up' and turns[m] == 's') or (ypos[m] <= 490 and turned[m] == 0 and dirs[m] == 'down' and turns[m] == 'r') or (ypos[m] >= 310 and turned[m] == 0 and dirs[m] == 'up' and turns[y] == 'l') or (ypos[m] <= 490 and turned[m] == 0 and dirs[m] == 'down' and turns[m] == 'l') or (ypos[m] >= 310 and turned[m] == 0 and dirs[m] == 'up' and turns[m] == 'r'):
+                if (ypos[m] in range(490, 310, -1) and dirs[m] == 'down' and turns[m] == 's') or (ypos[m] in range(310, 500) and dirs[m] == 'up' and turns[m] == 's') or (ypos[m] <= 490 and turned[m] == 0 and dirs[m] == 'down' and turns[m] == 'r') or (ypos[m] >= 310 and turned[m] == 0 and dirs[m] == 'up' and turns[m] == 'l') or (ypos[m] <= 490 and turned[m] == 0 and dirs[m] == 'down' and turns[m] == 'l') or (ypos[m] >= 310 and turned[m] == 0 and dirs[m] == 'up' and turns[m] == 'r'):
                     fdb = 1
                     break
             if fdb == 1:
