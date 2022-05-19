@@ -260,7 +260,7 @@ dirs = []
 turns = []
 turned = []
 ql = []
-vehiclegen = 2
+vehiclegen = 1
 counter = 10
 counter2 = 2
 sg = 'lr'
@@ -273,8 +273,9 @@ temp = 0
 vehiclecount = 0
 vehiclel = []
 vehiclelcount = 0
-hell = 10
-hev = 385
+vehiclercount=0
+vehicleucount=0
+vehicledcount=0
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -283,9 +284,21 @@ while running:
             counter -= 1
             counter2 -= 1
         if event.type == pygame.QUIT:
+            print('left-',vehiclelcount)
+            print('down-',vehicledcount)
+            print('right-',vehiclercount)
+            print('up-',vehicleucount)
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
+    # screen.blit(carl,(10,385))
+    # screen.blit(carl,(530,385))
+    # screen.blit(carr,(1350,445))
+    # screen.blit(carr,(765,445))
+    # screen.blit(caru,(765,5))
+    # screen.blit(caru,(765,320))
+    # screen.blit(card,(640,760))
+    # screen.blit(card,(640,490))
     if counter < 0:
         if sg == 'lr':
             fl = 0
@@ -364,6 +377,10 @@ while running:
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
+            if xpos[i]==11:
+                vehiclelcount+=1
+            if xpos[i]==530:
+                vehiclelcount-=1
             if signall == 'red' or signall == 'yellow':
                 if xpos[i] > 496:
                     if turns[i] == 'l':
@@ -533,6 +550,10 @@ while running:
                         else:
                             xpos[i] += 1
         elif dirs[i] == 'up':
+            if ypos[i]==6:
+                vehicleucount+=1
+            if ypos[i]==320:
+                vehicleucount-=1
             if signalu == 'red' or signalu == 'yellow':
                 if ypos[i] > 301:
                     if turns[i] == 'l':
@@ -712,6 +733,10 @@ while running:
                 else:
                     ypos[i] += 1
         elif dirs[i] == 'right':
+            if xpos[i]==1349:
+                vehiclercount+=1
+            if xpos[i]==765:
+                vehiclercount-=1
             if signalr == 'red' or signalr == 'yellow':
                 if xpos[i] < 799:
                     if turns[i] == 'r':
@@ -881,6 +906,10 @@ while running:
                         else:
                             xpos[i] -= 1
         else:
+            if ypos[i]==759:
+                vehicledcount+=1
+            if ypos[i]==490:
+                vehicledcount-=1
             if signald == 'red' or signald == 'yellow':
                 if ypos[i] < 519:
                     if turns[i] == 'l':
@@ -1073,7 +1102,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 2
+                vehiclegen = 1
                 turns.append(turn)
                 turned.append(0)
         elif dir == 'right':
@@ -1088,7 +1117,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 2
+                vehiclegen = 1
                 turns.append(turn)
                 turned.append(0)
         elif dir == 'up':
@@ -1103,7 +1132,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 2
+                vehiclegen = 1
                 turns.append(turn)
                 turned.append(0)
         else:
@@ -1118,7 +1147,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 2
+                vehiclegen = 1
                 turns.append(turn)
                 turned.append(0)
     for i in range(vehiclecount):
