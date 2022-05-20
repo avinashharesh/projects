@@ -1,14 +1,14 @@
 import pygame
 import random
 import time
-
+import timeit
 
 # initialize pygame
 pygame.init()
-
+start = timeit.default_timer()
 # create game screen
 screen = pygame.display.set_mode((1400, 800))
-background = pygame.image.load('images/intersection2.png')
+background = pygame.image.load('images/intersection3.png')
 
 # players
 carl = pygame.image.load('images/left/car.png')
@@ -124,6 +124,7 @@ bikeur30 = pygame.image.load('images/up/biker30.png')
 bikeur60 = pygame.image.load('images/up/biker60.png')
 bikeur90 = pygame.image.load('images/up/biker90.png')
 green = pygame.image.load('images/signals/green.png')
+green2 = pygame.image.load('images/signals/green2.png')
 red = pygame.image.load('images/signals/red.png')
 yellow = pygame.image.load('images/signals/yellow.png')
 
@@ -264,6 +265,7 @@ vehiclegen = 1
 counter = 10
 counter2 = 2
 counter3 = counter/2
+counter4=2
 sg = 'lr'
 sg2 = 'l'
 a = 0
@@ -278,6 +280,10 @@ vehiclelcount = 0
 vehiclercount = 0
 vehicleucount = 0
 vehicledcount = 0
+vehicleLeft=0
+vehicleRight=0
+vehicleUp=0
+vehicleDown=0
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -287,6 +293,12 @@ while running:
             counter2 -= 1
             counter3 -= 1
         if event.type == pygame.QUIT:
+            vehiclePassed = vehicleDown + vehicleRight + vehicleUp + vehicleLeft
+            stop = timeit.default_timer()
+            timeRun = stop - start
+            timeRun = int(timeRun)
+            print('Simulation time:' ,timeRun, "seconds")
+            print('Total no of vehicles passed:' ,vehiclePassed)
             print('left-', vehiclelcount)
             print('down-', vehicledcount)
             print('right-', vehiclercount)
@@ -316,6 +328,7 @@ while running:
             if counter > 16:
                 counter = 16
             counter3 = counter/2
+            counter4=2
         elif sg == 'ud':
             fd = 0
             sg = 'lr'
@@ -329,6 +342,7 @@ while running:
             if counter > 16:
                 counter = 16
             counter3 = counter/2
+            counter4=2
     if counter >= 0 or flag == 1:
         if sg == 'lr':
             if fd == 0:
@@ -358,23 +372,39 @@ while running:
                 screen.blit(red, (500, 250))
             else:
                 if sg2 == 'l':
-                    signall = 'green'
-                    screen.blit(green, (500, 250))
-                    if counter3 <= 0:
-                        signalr = 'green'
-                        screen.blit(green, (825, 525))
-                    else:
-                        signalr = 'red'
-                        screen.blit(red, (825, 525))
-                else:
-                    signalr = 'green'
-                    screen.blit(green, (825, 525))
-                    if counter3 <= 0:
+                    if counter3>0:
                         signall = 'green'
                         screen.blit(green, (500, 250))
-                    else:
+                        signalr = 'red'
+                        screen.blit(red, (825, 525))
+                    if counter3 <= 0:
+                        if counter<=counter4:
+                            signalr='green'
+                            screen.blit(green, (825, 525))
+                            signall='red'
+                            screen.blit(red, (500, 250))
+                        else:
+                            signall = 'green2'
+                            screen.blit(green2, (500, 250))
+                            signalr = 'green2'
+                            screen.blit(green2, (825, 525))            
+                else:
+                    if counter3>0:
+                        signalr = 'green'
+                        screen.blit(green, (825, 525))
                         signall = 'red'
                         screen.blit(red, (500, 250))
+                    if counter3 <= 0:
+                        if counter<=counter4:
+                            signall='green'
+                            screen.blit(green, (500, 250))
+                            signalr = 'red'
+                            screen.blit(red, (825, 525))
+                        else: 
+                            signalr = 'green2'
+                            screen.blit(green2, (825, 525))
+                            signall = 'green2'
+                            screen.blit(green2, (500, 250))
         elif sg == 'ud':
             if fl == 0:
                 counter2 = 2
@@ -403,29 +433,49 @@ while running:
                 screen.blit(red, (825, 250))
             else:
                 if sg2 == 'u':
-                    signalu = 'green'
-                    screen.blit(green, (825, 250))
-                    if counter3 <= 0:
-                        signald = 'green'
-                        screen.blit(green, (500, 525))
-                    else:
-                        signald = 'red'
-                        screen.blit(red, (500, 525))
-                else:
-                    signald = 'green'
-                    screen.blit(green, (500, 525))
-                    if counter3 <= 0:
+                    if counter3>0:
                         signalu = 'green'
                         screen.blit(green, (825, 250))
-                    else:
+                        signald = 'red'
+                        screen.blit(red, (500, 525))
+                    if counter3 <= 0:
+                        if counter<=counter4:
+                            signald = 'green'
+                            screen.blit(green, (500, 525))
+                            signalu = 'red'
+                            screen.blit(red, (825, 250))
+                        else:
+                            signalu = 'green2'
+                            screen.blit(green2, (825, 250))
+                            signald = 'green2'
+                            screen.blit(green2, (500, 525))
+                else:
+                    if counter3>0:
+                        signald = 'green'
+                        screen.blit(green, (500, 525))
                         signalu = 'red'
                         screen.blit(red, (825, 250))
+                    if counter3 <= 0:
+                        if counter<=counter4:
+                            signalu = 'green'
+                            screen.blit(green, (825, 250))
+                            signald = 'red'
+                            screen.blit(red, (500, 525))
+                        else:
+                            signald = 'green2'
+                            screen.blit(green2, (500, 525))
+                            signalu = 'green2'
+                            screen.blit(green2, (825, 250))
     v = ''
     x = 0
     y = 0
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
+            if signall=='green2' and turns[i]=='r' and xpos[i]<530:
+                turns[i]='s'
+            if(xpos[i] == 495):
+                vehicleLeft+=1
             if xpos[i] == 11:
                 vehiclelcount += 1
             if xpos[i] == 530:
@@ -599,6 +649,10 @@ while running:
                         else:
                             xpos[i] += 1
         elif dirs[i] == 'up':
+            if signalu=='green2' and turns[i]=='r' and ypos[i]<320:
+                turns[i]='s'
+            if(ypos[i] == 299):
+                vehicleUp +=1
             if ypos[i] == 6:
                 vehicleucount += 1
             if ypos[i] == 320:
@@ -782,6 +836,10 @@ while running:
                 else:
                     ypos[i] += 1
         elif dirs[i] == 'right':
+            if signalr=='green2' and turns[i]=='r' and xpos[i]>765:
+                turns[i]='s'
+            if(xpos[i] == 797):
+                vehicleRight +=1
             if xpos[i] == 1349:
                 vehiclercount += 1
             if xpos[i] == 765:
@@ -955,6 +1013,10 @@ while running:
                         else:
                             xpos[i] -= 1
         else:
+            if signald=='green2' and turns[i]=='r' and ypos[i]>490:
+                turns[i]='s'
+            if(ypos[i] == 517):
+                vehicleDown +=1
             if ypos[i] == 759:
                 vehicledcount += 1
             if ypos[i] == 490:
