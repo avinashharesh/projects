@@ -263,6 +263,7 @@ ql = []
 vehiclegen = 1
 counter = 10
 counter2 = 2
+counter3 = counter/2
 sg = 'lr'
 sg2 = 'l'
 a = 0
@@ -284,6 +285,7 @@ while running:
             vehiclegen -= 1
             counter -= 1
             counter2 -= 1
+            counter3 -= 1
         if event.type == pygame.QUIT:
             print('left-', vehiclelcount)
             print('down-', vehicledcount)
@@ -309,6 +311,11 @@ while running:
             else:
                 sg2 = 'u'
             counter = 2*(vehicledcount+vehicleucount)
+            if counter < 4:
+                counter = 4
+            if counter > 16:
+                counter = 16
+            counter3 = counter/2
         elif sg == 'ud':
             fd = 0
             sg = 'lr'
@@ -317,6 +324,11 @@ while running:
             else:
                 sg2 = 'r'
             counter = 2*(vehiclelcount+vehiclercount)
+            if counter < 4:
+                counter = 4
+            if counter > 16:
+                counter = 16
+            counter3 = counter/2
     if counter >= 0 or flag == 1:
         if sg == 'lr':
             if fd == 0:
@@ -345,11 +357,24 @@ while running:
                 screen.blit(red, (825, 525))
                 screen.blit(red, (500, 250))
             else:
-                signall = 'green'
-                signalr = 'green'
-                screen.blit(green, (825, 525))
-                screen.blit(green, (500, 250))
-
+                if sg2 == 'l':
+                    signall = 'green'
+                    screen.blit(green, (500, 250))
+                    if counter3 <= 0:
+                        signalr = 'green'
+                        screen.blit(green, (825, 525))
+                    else:
+                        signalr = 'red'
+                        screen.blit(red, (825, 525))
+                else:
+                    signalr = 'green'
+                    screen.blit(green, (825, 525))
+                    if counter3 <= 0:
+                        signall = 'green'
+                        screen.blit(green, (500, 250))
+                    else:
+                        signall = 'red'
+                        screen.blit(red, (500, 250))
         elif sg == 'ud':
             if fl == 0:
                 counter2 = 2
@@ -377,10 +402,24 @@ while running:
                 screen.blit(red, (500, 525))
                 screen.blit(red, (825, 250))
             else:
-                signalu = 'green'
-                signald = 'green'
-                screen.blit(green, (500, 525))
-                screen.blit(green, (825, 250))
+                if sg2 == 'u':
+                    signalu = 'green'
+                    screen.blit(green, (825, 250))
+                    if counter3 <= 0:
+                        signald = 'green'
+                        screen.blit(green, (500, 525))
+                    else:
+                        signald = 'red'
+                        screen.blit(red, (500, 525))
+                else:
+                    signald = 'green'
+                    screen.blit(green, (500, 525))
+                    if counter3 <= 0:
+                        signalu = 'green'
+                        screen.blit(green, (825, 250))
+                    else:
+                        signalu = 'red'
+                        screen.blit(red, (825, 250))
     v = ''
     x = 0
     y = 0
