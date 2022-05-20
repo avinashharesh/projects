@@ -264,6 +264,7 @@ vehiclegen = 1
 counter = 10
 counter2 = 2
 sg = 'lr'
+sg2 = 'l'
 a = 0
 fl = 1
 fu = 1
@@ -273,9 +274,9 @@ temp = 0
 vehiclecount = 0
 vehiclel = []
 vehiclelcount = 0
-vehiclercount=0
-vehicleucount=0
-vehicledcount=0
+vehiclercount = 0
+vehicleucount = 0
+vehicledcount = 0
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -284,10 +285,10 @@ while running:
             counter -= 1
             counter2 -= 1
         if event.type == pygame.QUIT:
-            print('left-',vehiclelcount)
-            print('down-',vehicledcount)
-            print('right-',vehiclercount)
-            print('up-',vehicleucount)
+            print('left-', vehiclelcount)
+            print('down-', vehicledcount)
+            print('right-', vehiclercount)
+            print('up-', vehicleucount)
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
@@ -303,10 +304,19 @@ while running:
         if sg == 'lr':
             fl = 0
             sg = 'ud'
+            if vehicledcount > vehicleucount:
+                sg2 = 'd'
+            else:
+                sg2 = 'u'
+            counter = 2*(vehicledcount+vehicleucount)
         elif sg == 'ud':
             fd = 0
             sg = 'lr'
-        counter = 10
+            if vehiclelcount > vehiclercount:
+                sg2 = 'l'
+            else:
+                sg2 = 'r'
+            counter = 2*(vehiclelcount+vehiclercount)
     if counter >= 0 or flag == 1:
         if sg == 'lr':
             if fd == 0:
@@ -377,10 +387,10 @@ while running:
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
-            if xpos[i]==11:
-                vehiclelcount+=1
-            if xpos[i]==530:
-                vehiclelcount-=1
+            if xpos[i] == 11:
+                vehiclelcount += 1
+            if xpos[i] == 530:
+                vehiclelcount -= 1
             if signall == 'red' or signall == 'yellow':
                 if xpos[i] > 496:
                     if turns[i] == 'l':
@@ -550,10 +560,10 @@ while running:
                         else:
                             xpos[i] += 1
         elif dirs[i] == 'up':
-            if ypos[i]==6:
-                vehicleucount+=1
-            if ypos[i]==320:
-                vehicleucount-=1
+            if ypos[i] == 6:
+                vehicleucount += 1
+            if ypos[i] == 320:
+                vehicleucount -= 1
             if signalu == 'red' or signalu == 'yellow':
                 if ypos[i] > 301:
                     if turns[i] == 'l':
@@ -733,10 +743,10 @@ while running:
                 else:
                     ypos[i] += 1
         elif dirs[i] == 'right':
-            if xpos[i]==1349:
-                vehiclercount+=1
-            if xpos[i]==765:
-                vehiclercount-=1
+            if xpos[i] == 1349:
+                vehiclercount += 1
+            if xpos[i] == 765:
+                vehiclercount -= 1
             if signalr == 'red' or signalr == 'yellow':
                 if xpos[i] < 799:
                     if turns[i] == 'r':
@@ -906,10 +916,10 @@ while running:
                         else:
                             xpos[i] -= 1
         else:
-            if ypos[i]==759:
-                vehicledcount+=1
-            if ypos[i]==490:
-                vehicledcount-=1
+            if ypos[i] == 759:
+                vehicledcount += 1
+            if ypos[i] == 490:
+                vehicledcount -= 1
             if signald == 'red' or signald == 'yellow':
                 if ypos[i] < 519:
                     if turns[i] == 'l':
