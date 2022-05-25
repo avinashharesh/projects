@@ -316,12 +316,13 @@ while running:
     # screen.blit(card,(640,760))
     # screen.blit(card,(640,490))
     if counter < 0:
-        if vehiclelcount+vehiclercount>vehicleucount+vehicledcount:
-            sg='lr'
-        else:
-            sg='ud'
+        # if vehiclelcount+vehiclercount>vehicleucount+vehicledcount:
+        #     sg='lr'
+        # else:
+        #     sg='ud'
         if sg == 'lr':
             fl = 0
+            sg='ud'
             if vehicledcount > vehicleucount:
                 sg2 = 'd'
             else:
@@ -339,6 +340,7 @@ while running:
                 counter4=4
         elif sg == 'ud':
             fd = 0
+            sg='lr'
             if vehiclelcount > vehiclercount:
                 sg2 = 'l'
             else:
