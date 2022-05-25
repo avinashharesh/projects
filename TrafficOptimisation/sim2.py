@@ -147,14 +147,15 @@ def VehicleGenerate():
     x = 0
     y = 0
     turn = ''
-    num1 = random.randint(0, 3)
-    if num1 == 0:
+    num1 = random.randint(0, 1001)
+    ger = [150,500,650,1000]
+    if (num1<ger[0]):
         dir = 'left'
-    elif num1 == 1:
+    elif (num1>ger[0] and num1<ger[1]):
         dir = 'up'
-    elif num1 == 2:
+    elif (num1>ger[1] and num1<ger[2]):
         dir = 'right'
-    else:
+    elif (num1>ger[2] and num1<ger[3]):
         dir = 'down'
     if dir == 'left':
         num2 = random.randint(0, 3)
@@ -262,10 +263,6 @@ turns = []
 turned = []
 ql = []
 vehiclegen = 2
-counter = 20
-counter2 = 2
-counter3 = (20/100)*counter
-counter4=(20/100)*counter
 sg = 'lr'
 sg2 = 'l'
 a = 0
@@ -284,6 +281,10 @@ vehicleLeft=0
 vehicleRight=0
 vehicleUp=0
 vehicleDown=0
+counter = 4*(vehiclecount+vehiclercount)
+counter2 = 2
+counter3 = (20/100)*counter
+counter4=(20/100)*counter
 while running:
     flag = 0
     for event in pygame.event.get():
@@ -329,6 +330,10 @@ while running:
                 counter = 20
             counter3 = (20/100)*counter
             counter4=(20/100)*counter
+            if counter3>4:
+                counter3=4
+            if counter4>4:
+                counter4=4
         elif sg == 'ud':
             fd = 0
             sg = 'lr'
@@ -343,6 +348,10 @@ while running:
                 counter = 20
             counter3 = (20/100)*counter
             counter4=(20/100)*counter
+            if counter3>4:
+                counter3=4
+            if counter4>4:
+                counter4=4
     if counter >= 0 or flag == 1:
         if sg == 'lr':
             if fd == 0:
