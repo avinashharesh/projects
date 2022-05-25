@@ -6,6 +6,10 @@ import timeit
 # initialize pygame
 pygame.init()
 start = timeit.default_timer()
+black=(0,0,0)
+white=(255,255,255)
+simtime=0
+font=pygame.font.Font(None,30)
 # create game screen
 screen = pygame.display.set_mode((1400, 800))
 background = pygame.image.load('images/intersection3.png')
@@ -286,6 +290,7 @@ counter2 = 2
 counter3 = (20/100)*counter
 counter4=(20/100)*counter
 while running:
+    simtime +=0.01749
     flag = 0
     for event in pygame.event.get():
         if event.type == pygame.USEREVENT:
@@ -307,6 +312,8 @@ while running:
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
+    simtimeText=font.render(("Simulation Time: " +str(simtime)),True,black,white)
+    screen.blit(simtimeText,(1160,40))
     # screen.blit(carl,(10,385))
     # screen.blit(carl,(530,385))
     # screen.blit(carr,(1350,445))
