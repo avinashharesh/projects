@@ -262,10 +262,10 @@ turns = []
 turned = []
 ql = []
 vehiclegen = 2
-counter = 10
+counter = 20
 counter2 = 2
-counter3 = counter/2
-counter4=2
+counter3 = (20/100)*counter
+counter4=(20/100)*counter
 sg = 'lr'
 sg2 = 'l'
 a = 0
@@ -325,8 +325,8 @@ while running:
             counter = 4*(vehicledcount+vehicleucount)
             if counter < 4:
                 counter = 4
-            if counter > 25:
-                counter = 25
+            if counter > 20:
+                counter = 20
             counter3 = (20/100)*counter
             counter4=(20/100)*counter
         elif sg == 'ud':
@@ -339,8 +339,8 @@ while running:
             counter = 4*(vehiclelcount+vehiclercount)
             if counter < 4:
                 counter = 4
-            if counter > 25:
-                counter = 25
+            if counter > 20:
+                counter = 20
             counter3 = (20/100)*counter
             counter4=(20/100)*counter
     if counter >= 0 or flag == 1:
