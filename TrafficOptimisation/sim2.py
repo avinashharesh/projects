@@ -261,7 +261,7 @@ dirs = []
 turns = []
 turned = []
 ql = []
-vehiclegen = 1
+vehiclegen = 2
 counter = 10
 counter2 = 2
 counter3 = counter/2
@@ -322,13 +322,13 @@ while running:
                 sg2 = 'd'
             else:
                 sg2 = 'u'
-            counter = 2*(vehicledcount+vehicleucount)
+            counter = 4*(vehicledcount+vehicleucount)
             if counter < 4:
                 counter = 4
-            if counter > 16:
-                counter = 16
-            counter3 = counter/2
-            counter4=2
+            if counter > 25:
+                counter = 25
+            counter3 = (20/100)*counter
+            counter4=(20/100)*counter
         elif sg == 'ud':
             fd = 0
             sg = 'lr'
@@ -336,13 +336,13 @@ while running:
                 sg2 = 'l'
             else:
                 sg2 = 'r'
-            counter = 2*(vehiclelcount+vehiclercount)
+            counter = 4*(vehiclelcount+vehiclercount)
             if counter < 4:
                 counter = 4
-            if counter > 16:
-                counter = 16
-            counter3 = counter/2
-            counter4=2
+            if counter > 25:
+                counter = 25
+            counter3 = (20/100)*counter
+            counter4=(20/100)*counter
     if counter >= 0 or flag == 1:
         if sg == 'lr':
             if fd == 0:
@@ -1213,7 +1213,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 1
+                vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
         elif dir == 'right':
@@ -1228,7 +1228,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 1
+                vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
         elif dir == 'up':
@@ -1243,7 +1243,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 1
+                vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
         else:
@@ -1258,7 +1258,7 @@ while running:
                 ypos.append(y)
                 dirs.append(dir)
                 vehiclecount += 1
-                vehiclegen = 1
+                vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
     for i in range(vehiclecount):
