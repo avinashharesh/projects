@@ -147,14 +147,15 @@ def VehicleGenerate():
     x = 0
     y = 0
     turn = ''
-    num1 = random.randint(0, 3)
-    if num1 == 0:
+    num1 = random.randint(0, 1001)
+    ger = [150,500,650,1000]
+    if (num1<ger[0]):
         dir = 'left'
-    elif num1 == 1:
+    elif (num1>ger[0] and num1<ger[1]):
         dir = 'up'
-    elif num1 == 2:
+    elif (num1>ger[1] and num1<ger[2]):
         dir = 'right'
-    else:
+    elif (num1>ger[2] and num1<ger[3]):
         dir = 'down'
     if dir == 'left':
         num2 = random.randint(0, 3)
@@ -249,6 +250,7 @@ def VehicleGenerate():
             else:
                 turn = 's'
     return vehicle, x, y, dir, turn
+
 
 
 clock = pygame.time.Clock()
