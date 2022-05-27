@@ -265,6 +265,7 @@ ypos = []
 dirs = []
 turns = []
 turned = []
+turned2 = []
 ql = []
 vehiclegen = 2
 sg = 'lr'
@@ -444,10 +445,21 @@ while running:
                             signalr = 'red'
                             screen.blit(red, (825, 525))
                         else:
-                            signalr = 'green2'
-                            screen.blit(green2, (825, 525))
-                            signall = 'green2'
-                            screen.blit(green2, (500, 250))
+                            frb = 0
+                            for w in range(vehiclecount):
+                                if (xpos[w] <= 780 and turned[w] == 0 and dirs[w] == 'right' and turns[w] == 'r'):
+                                    frb = 1
+                                    break
+                            if frb == 0:
+                                signalr = 'green2'
+                                screen.blit(green2, (825, 525))
+                                signall = 'green2'
+                                screen.blit(green2, (500, 250))
+                            else:
+                                signalr = 'green'
+                                screen.blit(green, (825, 525))
+                                signall = 'red'
+                                screen.blit(red, (500, 250))
         elif sg == 'ud':
             if fl == 0:
                 counter2 = 2
@@ -509,13 +521,14 @@ while running:
                             screen.blit(green2, (500, 525))
                             signalu = 'green2'
                             screen.blit(green2, (825, 250))
+
     v = ''
     x = 0
     y = 0
     dir = ''
     for i in range(vehiclecount):
         if dirs[i] == 'left':
-            if signall == 'green2' and turns[i] == 'r' and xpos[i] < 530:
+            if signall == 'green2' and turns[i] == 'r' and xpos[i] > 530 and turned2[i] == 0:
                 turns[i] = 's'
             if(xpos[i] == 495):
                 vehicleLeft += 1
@@ -536,6 +549,7 @@ while running:
                                     vehicles[i] = truckll30
                                 elif vehicles[i] == bikel:
                                     vehicles[i] = bikell30
+                                turned2[i] = 1
                             elif xpos[i] == 570:
                                 if vehicles[i] == carll30:
                                     vehicles[i] = carll60
@@ -574,6 +588,7 @@ while running:
                                     vehicles[i] = bikelr30
                                 elif vehicles[i] == truckl:
                                     vehicles[i] = trucklr30
+                                turned2[i] = 1
                             elif xpos[i] == 685:
                                 if vehicles[i] == carlr30:
                                     vehicles[i] = carlr60
@@ -626,6 +641,7 @@ while running:
                                 vehicles[i] = truckll30
                             elif vehicles[i] == bikel:
                                 vehicles[i] = bikell30
+                            turned2[i] = 1
                         elif xpos[i] == 570:
                             if vehicles[i] == carll30:
                                 vehicles[i] = carll60
@@ -664,6 +680,7 @@ while running:
                                 vehicles[i] = bikelr30
                             elif vehicles[i] == truckl:
                                 vehicles[i] = trucklr30
+                            turned2[i] = 1
                         elif xpos[i] == 685:
                             if vehicles[i] == carlr30:
                                 vehicles[i] = carlr60
@@ -692,7 +709,7 @@ while running:
                         else:
                             xpos[i] += 1
         elif dirs[i] == 'up':
-            if signalu == 'green2' and turns[i] == 'r' and ypos[i] < 320:
+            if signalu == 'green2' and turns[i] == 'r' and ypos[i] > 320 and turned2[i] == 0:
                 turns[i] = 's'
             if(ypos[i] == 299):
                 vehicleUp += 1
@@ -713,6 +730,7 @@ while running:
                                     vehicles[i] = truckul30
                                 elif vehicles[i] == bikeu:
                                     vehicles[i] = bikeul30
+                                turned2[i] = 1
                             elif ypos[i] == 370:
                                 if vehicles[i] == carul30:
                                     vehicles[i] = carul60
@@ -751,6 +769,7 @@ while running:
                                     vehicles[i] = truckur30
                                 elif vehicles[i] == bikeu:
                                     vehicles[i] = bikeur30
+                                turned2[i] = 1
                             elif ypos[i] == 440:
                                 if vehicles[i] == carur30:
                                     vehicles[i] = carur60
@@ -811,6 +830,7 @@ while running:
                                 vehicles[i] = truckul30
                             elif vehicles[i] == bikeu:
                                 vehicles[i] = bikeul30
+                            turned2[i] = 1
                         elif ypos[i] == 370:
                             if vehicles[i] == carul30:
                                 vehicles[i] = carul60
@@ -849,6 +869,7 @@ while running:
                                 vehicles[i] = truckur30
                             elif vehicles[i] == bikeu:
                                 vehicles[i] = bikeur30
+                            turned2[i] = 1
                         elif ypos[i] == 440:
                             if vehicles[i] == carur30:
                                 vehicles[i] = carur60
@@ -879,7 +900,7 @@ while running:
                 else:
                     ypos[i] += 1
         elif dirs[i] == 'right':
-            if signalr == 'green2' and turns[i] == 'r' and xpos[i] > 765:
+            if signalr == 'green2' and turns[i] == 'r' and xpos[i] < 765 and turned2[i] == 0:
                 turns[i] = 's'
             if(xpos[i] == 797):
                 vehicleRight += 1
@@ -892,6 +913,7 @@ while running:
                     if turns[i] == 'r':
                         if xpos[i] <= 660 and xpos[i] >= 640:
                             if xpos[i] == 660:
+                                turned2[i] = 1
                                 if vehicles[i] == carr:
                                     vehicles[i] = carrr30
                                 elif vehicles[i] == busr:
@@ -930,6 +952,7 @@ while running:
                     elif turns[i] == 'l':
                         if xpos[i] <= 780 and xpos[i] >= 760:
                             if xpos[i] == 780:
+                                turned2[i] = 1
                                 if vehicles[i] == carr:
                                     vehicles[i] = carrl30
                                 elif vehicles[i] == busr:
@@ -982,6 +1005,7 @@ while running:
                 elif turns[i] == 'r':
                     if xpos[i] <= 660 and xpos[i] >= 640:
                         if xpos[i] == 660:
+                            turned2[i] = 1
                             if vehicles[i] == carr:
                                 vehicles[i] = carrr30
                             elif vehicles[i] == busr:
@@ -1020,6 +1044,7 @@ while running:
                 else:
                     if xpos[i] <= 780 and xpos[i] >= 760:
                         if xpos[i] == 780:
+                            turned2[i] = 1
                             if vehicles[i] == carr:
                                 vehicles[i] = carrl30
                             elif vehicles[i] == busr:
@@ -1056,7 +1081,7 @@ while running:
                         else:
                             xpos[i] -= 1
         else:
-            if signald == 'green2' and turns[i] == 'r' and ypos[i] > 490:
+            if signald == 'green2' and turns[i] == 'r' and ypos[i] < 490 and turned2[i] == 0:
                 turns[i] = 's'
             if(ypos[i] == 517):
                 vehicleDown += 1
@@ -1069,6 +1094,7 @@ while running:
                     if turns[i] == 'l':
                         if ypos[i] <= 470 and ypos[i] >= 450:
                             if ypos[i] == 470:
+                                turned2[i] = 1
                                 if vehicles[i] == card:
                                     vehicles[i] = cardl30
                                 elif vehicles[i] == busd:
@@ -1107,6 +1133,7 @@ while running:
                     elif turns[i] == 'r':
                         if ypos[i] <= 400 and ypos[i] >= 380:
                             if ypos[i] == 400:
+                                turned2[i] = 1
                                 if vehicles[i] == card:
                                     vehicles[i] = cardr30
                                 elif vehicles[i] == busd:
@@ -1167,6 +1194,7 @@ while running:
                 if turns[i] == 'l':
                     if ypos[i] <= 470 and ypos[i] >= 450:
                         if ypos[i] == 470:
+                            turned2[i] = 1
                             if vehicles[i] == card:
                                 vehicles[i] = cardl30
                             elif vehicles[i] == busd:
@@ -1205,6 +1233,7 @@ while running:
                 elif turns[i] == 'r':
                     if ypos[i] <= 400 and ypos[i] >= 380:
                         if ypos[i] == 400:
+                            turned2[i] = 1
                             if vehicles[i] == card:
                                 vehicles[i] = cardr30
                             elif vehicles[i] == busd:
@@ -1259,6 +1288,7 @@ while running:
                 vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
+                turned2.append(0)
         elif dir == 'right':
             fu = 0
             for u in range(vehiclecount):
@@ -1274,6 +1304,7 @@ while running:
                 vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
+                turned2.append(0)
         elif dir == 'up':
             ft = 0
             for t in range(vehiclecount):
@@ -1289,6 +1320,7 @@ while running:
                 vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
+                turned2.append(0)
         else:
             fw = 0
             for w in range(vehiclecount):
@@ -1304,6 +1336,7 @@ while running:
                 vehiclegen = 2
                 turns.append(turn)
                 turned.append(0)
+                turned2.append(0)
     for i in range(vehiclecount):
         player(vehicles[i], xpos[i], ypos[i])
     clock.tick(60)
