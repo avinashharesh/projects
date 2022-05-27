@@ -314,14 +314,6 @@ while running:
     simtimeText = font.render(
         ("Simulation Time: " + str(simtime)), True, black, white)
     screen.blit(simtimeText, (1160, 40))
-    # screen.blit(carl,(10,385))
-    # screen.blit(carl,(530,385))
-    # screen.blit(carr,(1350,445))
-    # screen.blit(carr,(765,445))
-    # screen.blit(caru,(765,5))
-    # screen.blit(caru,(765,320))
-    # screen.blit(card,(640,760))
-    # screen.blit(card,(640,490))
     if counter < 0:
         if sg == 'lr':
             fl = 0
@@ -331,10 +323,6 @@ while running:
             else:
                 sg2 = 'u'
             counter = 20
-            # if counter < 4:
-            #     counter = 4
-            # if counter > 25:
-            #     counter = 25
             counter3 = 2
             counter4 = 2
         elif sg == 'ud':
@@ -345,10 +333,6 @@ while running:
             else:
                 sg2 = 'r'
             counter = 20
-            # if counter < 4:
-            #     counter = 4
-            # if counter > 25:
-            #     counter = 25
             counter3 = 2
             counter4 = 2
     if counter >= 0 or flag == 1:
