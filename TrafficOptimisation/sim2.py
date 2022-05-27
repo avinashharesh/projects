@@ -329,14 +329,6 @@ while running:
     simtimeText = font.render(
         ("Simulation Time: " + str(simtime)), True, black, white)
     screen.blit(simtimeText, (1160, 40))
-    # screen.blit(carl,(10,385))
-    # screen.blit(carl,(530,385))
-    # screen.blit(carr,(1350,445))
-    # screen.blit(carr,(765,445))
-    # screen.blit(caru,(765,5))
-    # screen.blit(caru,(765,320))
-    # screen.blit(card,(640,760))
-    # screen.blit(card,(640,490))
     if counter < 0:
         if vehiclelcount+vehiclercount > vehicleucount+vehicledcount:
             c1 += 1
