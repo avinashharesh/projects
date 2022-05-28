@@ -12,7 +12,7 @@ simtime = 0
 font = pygame.font.Font(None, 30)
 # create game screen
 screen = pygame.display.set_mode((1400, 800))
-background = pygame.image.load('images/intersection3.png')
+background = pygame.image.load('images/intersection4.png')
 
 # players
 carl = pygame.image.load('images/left/car.png')
@@ -309,10 +309,10 @@ if counter4 > rmax:
 c1 = 0
 c2 = 0
 while running:
-    simtime += 0.01749
     flag = 0
     for event in pygame.event.get():
         if event.type == pygame.USEREVENT:
+            simtime += 1
             vehiclegen -= 1
             counter -= 1
             counter2 -= 1
@@ -322,12 +322,9 @@ while running:
             stop = timeit.default_timer()
             timeRun = stop - start
             timeRun = int(timeRun)
+            print("Dynamic Simulation:")
             print('Simulation time:', timeRun, "seconds")
             print('Total no of vehicles passed:', vehiclePassed)
-            print('left-', vehiclelcount)
-            print('down-', vehicledcount)
-            print('right-', vehiclercount)
-            print('up-', vehicleucount)
             running = False
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
