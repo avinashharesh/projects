@@ -12,7 +12,7 @@ simtime = 0
 font = pygame.font.Font(None, 30)
 # create game screen
 screen = pygame.display.set_mode((1400, 800))
-background = pygame.image.load('images/intersection4.png')
+background = pygame.image.load('images/intersection3.png')
 
 # players
 carl = pygame.image.load('images/left/car.png')
