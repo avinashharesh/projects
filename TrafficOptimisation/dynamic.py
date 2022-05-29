@@ -287,10 +287,10 @@ vehicleRight = 0
 vehicleUp = 0
 vehicleDown = 0
 max = 40
-min = 0
+min = 10
 rmax = 5
-rmin = 0
-counter = 3*(vehiclecount+vehiclercount)
+rmin = 2
+counter = 2*(vehiclecount+vehiclercount)+1
 if counter < min:
     counter = min
 if counter > max:
@@ -346,13 +346,17 @@ while running:
             else:
                 sg = 'ud'
                 c2 = 0
+        if vehiclelcount+vehiclercount == 0:
+            sg = 'ud'
+        if vehicleucount+vehicledcount == 0:
+            sg = 'lr'
         if sg == 'ud':
             fl = 0
             if vehicledcount > vehicleucount:
                 sg2 = 'd'
             else:
                 sg2 = 'u'
-            counter = 3*(vehicledcount+vehicleucount)
+            counter = 2*(vehicledcount+vehicleucount)+1
             if counter < min:
                 counter = min
             if counter > max:
@@ -373,7 +377,7 @@ while running:
                 sg2 = 'l'
             else:
                 sg2 = 'r'
-            counter = 3*(vehiclelcount+vehiclercount)
+            counter = 2*(vehiclelcount+vehiclercount)+1
             if counter < min:
                 counter = min
             if counter > max:
