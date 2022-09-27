@@ -1,0 +1,19 @@
+#pet {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 200px;
+}
+#name {
+  display: flex;
+  justify-content: center;
+}
+#smbt {
+  text-align: center;
+}
+#gr {
+  text-align: center;
+}
+body {
+  background-image: url("wp7213373.jpg");
+}

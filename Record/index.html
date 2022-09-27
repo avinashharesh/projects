@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Records</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>RECORDS</h1>
+    <div class="fname">
+      <form>
+        <label>First Name:</label>
+        <br />
+        <input type="text" id="fn" value="" />
+      </form>
+    </div>
+    <div class="lname">
+      <form>
+        <label>Last Name:</label>
+        <br />
+        <input type="text" id="ln" value="" />
+      </form>
+    </div>
+    <div class="gender">
+      <form>
+        <label>Gender:</label>
+        <br />
+        <input type="text" id="g" value="" />
+      </form>
+    </div>
+    <div class="age">
+      <form>
+        <label>Age:</label>
+        <br />
+        <input type="text" id="ag" value="" />
+      </form>
+    </div>
+    <div class="specialization">
+      <form>
+        <label>Specialization:</label>
+        <br />
+        <input type="text" id="s" value="" />
+      </form>
+    </div>
+    <div class="expirience">
+      <form>
+        <label>Expirience:</label>
+        <br />
+        <input type="text" id="ex" value="" />
+      </form>
+    </div>
+    <div class="achievments">
+      <form>
+        <label>Achievments:</label>
+        <br />
+        <input type="text" id="ac" value="" />
+      </form>
+    </div>
+    <div class="smbt">
+      <button
+        onclick="submit(),document.getElementById('fn').value='',document.getElementById('ln').value='',document.getElementById('g').value='',document.getElementById('ag').value='',document.getElementById('s').value='',document.getElementById('ex').value='',document.getElementById('ac').value=''"
+      >
+        SUBMIT
+      </button>
+      <button onclick="filter()">FILTER</button>
+      <button onclick="display()">DISPLAY</button>
+    </div>
+    <div class="smbt2">
+      <h3 id="filter1"></h3>
+      <button id="ml" onclick="ml()"></button>
+      <button id="ds" onclick="ds()"></button>
+      <button id="cs" onclick="cs()"></button>
+      <button id="cc" onclick="cc()"></button>
+    </div>
+    <div class="smbt3">
+      <h3 id="filter2"></h3>
+      <button id="ze" onclick="ze()"></button>
+      <button id="el" onclick="el()"></button>
+      <button id="tw" onclick="tw()"></button>
+      <button id="th" onclick="th()"></button>
+    </div>
+    <div class="info">
+      <table id="myTable" style="width: 100%">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Specialization</th>
+          <th>Expirience</th>
+          <th>Achievments</th>
+        </tr>
+      </table>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

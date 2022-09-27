@@ -1,0 +1,37 @@
+h1 {
+  padding-top: 20px;
+  text-align: center;
+}
+.name {
+  display: flex;
+  justify-content: center;
+}
+.ncd {
+  display: flex;
+  justify-content: center;
+}
+.ngd {
+  display: flex;
+  justify-content: center;
+}
+.min {
+  display: flex;
+  justify-content: center;
+}
+#sbt {
+  text-align: center;
+}
+#tax {
+  display: flex;
+  justify-content: center;
+}
+#tot {
+  display: flex;
+  justify-content: center;
+}
+.smbt {
+  text-align: center;
+}
+body {
+  background-image: url("wp7213373.jpg");
+}

@@ -1,0 +1,31 @@
+#main {
+  padding-top: 100px;
+  text-align: center;
+}
+#main2 {
+  padding-top: 250px;
+  text-align: center;
+  font-size: 70px;
+}
+.fname {
+  display: flex;
+  justify-content: center;
+}
+.lname {
+  display: flex;
+  justify-content: center;
+}
+.ag {
+  display: flex;
+  justify-content: center;
+}
+.email {
+  display: flex;
+  justify-content: center;
+}
+.smbt {
+  text-align: center;
+}
+body {
+  background-image: url("wp7213373.jpg");
+}
