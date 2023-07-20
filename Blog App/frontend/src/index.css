@@ -1,0 +1,26 @@
+*{
+  margin: 0;
+}
+
+.blogImage{
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.noBlogs{
+    left: 0;
+    line-height: 200px;
+    margin-top: -100px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    
+}
+
+.blogPage{
+  font-size: 30px;
+}
